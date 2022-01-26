@@ -8,6 +8,7 @@ import { RegisterStudent2 } from "./pages/RegisterStudent2";
 import { RegisterTeacher1 } from "./pages/RegisterTeacher1";
 import { RegisterTeacher2 } from "./pages/RegisterTeacher2";
 import { Search } from "./pages/Search";
+import { VisualizarProfessor } from "./pages/VisualizarProfessor";
 
 import { Home } from "./pages/Home";
 
@@ -26,6 +27,7 @@ function RoutesApp() {
 
         <Route path="/home" element={<Home />} />
         <Route path="/search" element={<Search />} />
+        <Route path="/visualizarProfessor" element={<VisualizarProfessor />} />
       </Routes>
     </Router>
   );

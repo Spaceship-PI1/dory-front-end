@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { Container } from "semantic-ui-react";
+import DropdownExampleClearable from "../components/Example";
 
 import NavBarGlobal from "../components/NavBarGlobal";
 import ButtonNav from "../components/ButtonNav";
@@ -191,6 +193,9 @@ export function Search() {
                                     filtro2="Modalidade"
                                 />
                             }
+
+                            <DropdownExampleClearable />
+
                         </div>
 
                         <MenuProfessores 

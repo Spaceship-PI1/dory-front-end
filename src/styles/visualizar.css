@@ -1,0 +1,244 @@
+nav.container.nav-perfil {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    background-color: var(--white);
+    border-bottom: 1px solid var(--gray-5);
+}
+
+nav.container.nav-perfil ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    margin-left: 18px;
+}
+
+nav.container.nav-perfil h2 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 2rem;
+    margin-top: 5px;
+    color: var(--blue);
+}
+
+nav.container.nav-perfil li {
+    margin-left: 16px;
+    font-size: 1.4rem;
+    color: var(--gray-3);
+}
+
+
+#visualizar-perfil {
+    display: flex;
+    flex-direction: row;
+}
+
+#visualizar-perfil .content-perfil {
+    display: flex;
+    flex-direction: column;
+
+    margin-top: 56px;
+}
+
+#visualizar-perfil #div-perfil {
+    border: 1px solid var(--gray-5);
+    border-radius: 12px;
+    height: 365px;
+}
+
+#visualizar-perfil #div-perfil .infos-perfil {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#visualizar-perfil #div-perfil .div-status {
+    background-color: var(--green);
+    width: 100%;
+    padding: 12px 0;
+    
+    border-top-right-radius: 12px;
+    border-top-left-radius: 12px;
+}
+
+#visualizar-perfil #div-perfil .label-status {
+    color: var(--white);
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 1.4rem;
+}
+
+#visualizar-perfil .perfil {
+    display: flex;
+    flex-direction: column;
+    width: 134px;
+    margin-top: 16px;
+}
+
+#visualizar-perfil .perfil .foto-perfil {
+    width: 134px;
+    height: 134px;
+    border: 1px solid var(--gray-5);
+    border-radius: 50%;
+}
+
+#visualizar-perfil .perfil .foto-perfil img {
+    width: 134px;
+    height: 134px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center;
+}
+
+#visualizar-perfil .perfil .status  {
+    width: 32px;
+    height: 32px;
+    background-color: var(--white);
+    border: 1px solid var(--green);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-self: flex-end;
+
+    margin-top: -32px;
+}
+
+#visualizar-perfil .perfil .status#disponível {
+    border: 1px solid var(--green);
+}
+
+#visualizar-perfil .perfil .status .bolinha {
+    width: 24px;
+    height: 24px;
+    background-color: var(--white);
+    border-radius: 50%;
+}
+
+#visualizar-perfil .perfil .status .bolinha#disponível {
+    background-color: var(--green);
+}
+
+#visualizar-perfil .dados-perfil {
+    margin: 18px 0;
+}
+
+#visualizar-perfil .dados-perfil h4 {
+    color: var(--black-purple);
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
+    text-align: center;
+}
+
+#visualizar-perfil .dados-perfil p {
+    color: var(--gray-2);
+    margin-top: -3px;
+    text-align: center;
+}
+
+#visualizar-perfil .yellow.solicitar {
+    width: 250px;
+    margin: 12px;
+}
+
+#visualizar-perfil #infos-professor {
+    margin-left: 56px;
+}
+
+#visualizar-perfil .card-info .header-info h2 {
+    color: var(--blue);
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+}
+
+#visualizar-perfil .card-info .header-info hr {
+    border: 1px solid var(--gray-5);
+}
+
+#visualizar-perfil .card-info .textParagraph {
+    max-width: 90%;
+    margin-top: 16px;
+    color: var(--gray-1);
+    font-size: 1.6rem;
+    margin-bottom: 42px;
+}
+
+#visualizar-perfil .interesses-list-tags {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 16px;
+    margin-bottom: 42px;
+}
+
+#visualizar-perfil .interesses-list-tags li {
+    background: var(--blue-light);
+    color: var(--black-purple);
+    padding: 12px 18px;
+    border-radius: 36px;
+    margin-right: 12px;
+    margin-bottom: 12px;
+}
+
+#visualizar-perfil .card-TCC {
+    margin-top: 16px;
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    margin-bottom: 42px;
+}
+
+#visualizar-perfil .cards-pesquisa {
+    margin-top: 16px;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 42px;
+}
+
+#visualizar-perfil .card-pesquisa {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+#visualizar-perfil .card-pesquisa p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 500;
+    color: var(--black-purple);
+    max-width: 95%;
+}
+
+#visualizar-perfil .card-pesquisa label {
+    color: var(--gray-3);
+    font-size: 1.6rem;
+    margin-top: -8px;
+}
+
+#visualizar-perfil .card-pesquisa:last-child {
+    margin-bottom: 0;
+}
+
+#visualizar-perfil .card-pesquisa.disciplinas label {
+    margin-top: 4px;
+    font-size: 1.8rem;
+    font-weight: 400;
+}
+
+#visualizar-perfil .interesses-list-tags.disciplinas {
+    margin-top: 4px;
+    margin-bottom: 0;
+}
+
+#visualizar-perfil .interesses-list-tags.disciplinas li {
+    padding: 8px 16px;
+    border-radius: 36px;
+    margin-right: 12px;
+    margin-bottom: 12px;
+}
+
+#visualizar-perfil #null {
+    display: none;
+}
