@@ -45,6 +45,10 @@ nav.container.nav-perfil li {
     height: 365px;
 }
 
+#visualizar-perfil #div-perfil.aluno {
+    height: 324px;
+}   
+
 #visualizar-perfil #div-perfil .infos-perfil {
     display: flex;
     flex-direction: column;

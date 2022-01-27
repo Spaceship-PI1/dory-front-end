@@ -14,7 +14,7 @@ export function VisualizarProfessor() {
         id: 0,
         foto: srcPerfil,
         nome: "Liandro Roger",
-        email: "liandro @virtual.ufc.br",
+        email: "liandro@virtual.ufc.br",
         areas: [
             'Jogos', 'Design', 'Criação de personagens', 'Ilustração', 'Desenho', 'Visual Development', 'Animação', 'Cartum '
         ],
