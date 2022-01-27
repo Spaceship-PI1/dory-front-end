@@ -1,0 +1,118 @@
+.container.interesses-container {
+    height: auto;
+    margin: 48px 0;
+}
+
+.interesses-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    margin-top: 48px;
+    margin-bottom: 36px;
+}
+
+.interesses-container p {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 1.4rem;
+    color: var(--gray-3);
+    margin-right: 16px;
+}
+
+.interesses-container .interesses-list-tags {
+    list-style: none;
+    display: flex;
+}
+
+.interesses-container .interesses-list-tags li {
+    background: var(--blue-light);
+    color: var(--black-purple);
+    padding: 12px 18px;
+    border-radius: 36px;
+    margin-right: 12px;
+}
+
+#visualizar-tcc {
+    display: flex;
+    flex-direction: column;
+}
+
+#visualizar-tcc .content-tcc {
+    display: flex;
+    flex-direction: column;
+}
+
+#visualizar-tcc .card-info .header-info h2 {
+    color: var(--blue);
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+}
+
+#visualizar-tcc .card-info .header-info hr {
+    border: 1px solid var(--gray-5);
+}
+
+#visualizar-tcc .card-info .textParagraph {
+    max-width: 90%;
+    margin-top: 16px;
+    color: var(--gray-1);
+    font-size: 1.6rem;
+    margin-bottom: 42px;
+}
+
+#visualizar-tcc .interesses-list-tags {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 16px;
+    margin-bottom: 42px;
+}
+
+#visualizar-tcc .interesses-list-tags li {
+    background: var(--blue-light);
+    color: var(--black-purple);
+    padding: 12px 18px;
+    border-radius: 36px;
+    margin-right: 12px;
+    margin-bottom: 12px;
+}
+
+#visualizar-tcc #title {
+    display: flex;
+    flex-direction: row;
+}
+
+#visualizar-tcc #title h1 {
+    font-size: 2.8rem;
+    max-width: 80%;
+    color: var(--blue);
+}
+
+#visualizar-tcc #title p {
+    margin-bottom: 4px;
+}
+
+#visualizar-tcc #title .creditos {
+    margin-top: 16px;
+    margin-bottom: 42px;
+}
+
+#visualizar-tcc .yellow.visualizar {
+    width: 235px;
+    height: 55px;
+}
+
+#visualizar-tcc .cover {
+    height: 180px;
+    margin-bottom: 32px;
+}
+
+#visualizar-tcc .cover img {
+    width: 100%;
+    height: 180px;;
+    border-radius: 12px;
+    object-fit: cover;
+    object-position: center;
+}

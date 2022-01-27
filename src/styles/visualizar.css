@@ -26,7 +26,6 @@ nav.container.nav-perfil li {
     color: var(--gray-3);
 }
 
-
 #visualizar-perfil {
     display: flex;
     flex-direction: row;

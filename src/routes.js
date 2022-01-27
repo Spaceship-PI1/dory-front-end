@@ -10,6 +10,7 @@ import { RegisterTeacher2 } from "./pages/RegisterTeacher2";
 import { Search } from "./pages/Search";
 import { VisualizarProfessor } from "./pages/VisualizarProfessor";
 import { VisualizarAluno } from "./pages/VisualizarAluno";
+import { VisualizarTCC } from "./pages/VisualizarTCC";
 
 import { Home } from "./pages/Home";
 
@@ -30,6 +31,7 @@ function RoutesApp() {
         <Route path="/search" element={<Search />} />
         <Route path="/visualizarProfessor" element={<VisualizarProfessor />} />
         <Route path="/visualizarAluno" element={<VisualizarAluno />} />
+        <Route path="/visualizarTCC" element={<VisualizarTCC />} />
       </Routes>
     </Router>
   );
