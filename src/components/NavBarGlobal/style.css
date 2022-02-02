@@ -71,3 +71,25 @@ nav.container .user-access .item .circle-img .perfil-icon {
     height: 32px;
     border-radius: 50%;
 }
+
+nav.container .solicitacoes-notification {
+    display: flex;
+}
+
+nav.container .badge {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    margin-left: -14px;
+    margin-top: -4px;
+
+    background: var(--yellow);
+    color: var(--black-purple);
+    font-size: 1.4rem;
+    font-weight: 700;
+    text-align: center;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

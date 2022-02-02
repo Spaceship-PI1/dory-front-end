@@ -6,6 +6,7 @@ import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import Avatar from '@mui/material/Avatar';
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 
 import logo from '../../assets/logo-negativa.svg';
 import envelope from '../../assets/icons/envelope.svg';
@@ -21,6 +22,7 @@ export default function NavBarGlobal() {
     const handleClose = () => setAnchorEl(null);
 
     const perfil = "aluno";
+    const solicitacoesPendentes = 3;
 
     return (
         <nav className="container">
@@ -43,8 +45,12 @@ export default function NavBarGlobal() {
 
             <div className="user-access">
                 <div className="item">
-                    <div className="circle-img">
-                        <img className="solicitacoes-icon" src={envelope} alt="ícone de solicitação" />
+                    <div className="solicitacoes-notification">
+                        <div className="circle-img">
+                            <img className="solicitacoes-icon" src={envelope} alt="ícone de solicitação" />
+                        </div>
+
+                        {solicitacoesPendentes > 0 ? <div className="badge">{solicitacoesPendentes}</div> : null}
                     </div>
 
                     <Link className="access"
@@ -77,6 +83,7 @@ export default function NavBarGlobal() {
                         aria-haspopup="true"
                         aria-expanded={open ? 'true' : undefined}
                         onClick={handleClick}
+                        endIcon={<ArrowDropDownIcon sx={{ marginLeft: -0.8 }} />}
                         sx={{
                             textTransform: 'none',
                             fontFamily: 'Roboto',
