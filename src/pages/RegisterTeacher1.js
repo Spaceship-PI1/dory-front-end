@@ -10,11 +10,6 @@ import add from './../assets/icons/add.svg';
 import '../styles/registerStudent.css';
 
 export function RegisterTeacher1() {
-    const [page, setPage] = useState(1);
-    const handleChange = (e, value) => {
-        setPage(value);
-    }
-
     return (
         <div>
             <NavBarGlobal />

@@ -58,11 +58,6 @@
     margin-bottom: 36px;
 }
 
-#search .resultados-container .item-resultado h1 {
-    color: var(--black-purple);
-    font-size: 2.8rem;
-}
-
 #search .resultados-container .item-resultado .nav-filtros {
     margin-top: 18px;
 }
@@ -93,4 +88,22 @@
     margin-right: 16px;
     width: 75%;
     align-self: center;
+}
+
+#search .label-resultados {
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+#search .label-resultados  p {
+    font-size: 1.6rem;
+    font-family: 'Poppins', sans-serif;
+    color: var(--gray-3);
+    margin-right: 6px;
+}
+
+#search .label-resultados h1 {
+    color: var(--blue);
+    font-size: 2.4rem;
 }

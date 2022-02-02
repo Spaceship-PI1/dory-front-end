@@ -1,12 +1,11 @@
 import React, { useState } from "react";
-import { Container } from "semantic-ui-react";
-import DropdownExampleClearable from "../components/Example";
+import Box from '@mui/material/Box';
 
 import NavBarGlobal from "../components/NavBarGlobal";
 import ButtonNav from "../components/ButtonNav";
 import MenuProfessores from "../components/MenuProfessores";
 import MenuTCCs from "../components/MenuTCCs";
-import FiltroContextual from "../components/FiltroContextual";
+import Filtro from "../components/Filtro";
 
 import search from '../assets/icons/search-gray.svg';
  
@@ -15,14 +14,6 @@ import '../styles/search.css';
 export function Search() {
     const [professores, setProfessores] = useState(true);
     const [TCCs, setTCCs] = useState(false);
-
-    const srcPerfil = "https://images.pexels.com/photos/7163364/pexels-photo-7163364.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500";
-
-    const pesquisa = "Jogos";
-
-    const interesses = [
-        'Jogos', 'Design', 'Criação de personagens', 'Ilustração', 'Desenho' 
-    ]
 
     const handleSetProfessores = () => {
         setProfessores(true); 
@@ -33,6 +24,25 @@ export function Search() {
         setTCCs(true);
         setProfessores(false);
     } 
+
+    const [disponibilidade, setDisponibilidade] = useState('');
+    const [preferenciaModalidade, setPreferenciaModalidade] = useState('');
+    const [semestre, setSemestre] = useState('');
+    const [modalidade, setModalidade] = useState('');
+
+    const handleChangeDisponibilidade = (e) => setDisponibilidade(e.target.value); 
+    const handleChangePreferenciaModalidade = (e) => setPreferenciaModalidade(e.target.value); 
+    const handleChangeSemestre = (e) => setSemestre(e.target.value); 
+    const handleChangeModalidade = (e) => setModalidade(e.target.value); 
+
+
+    const srcPerfil = "https://images.pexels.com/photos/7163364/pexels-photo-7163364.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500";
+
+    const pesquisa = "Jogos";
+
+    const interesses = [
+        'Jogos', 'Design', 'Criação de personagens', 'Ilustração', 'Desenho' 
+    ]
 
     const listProfessores = [
         {
@@ -163,7 +173,10 @@ export function Search() {
 
                 <div className="resultados-container">
                     <div className="item-resultado">
-                        <h1>{pesquisa}</h1>
+                        <div className="label-resultados">
+                            <p>Resultados para</p>
+                            <h1 className="label-pesquisa">{pesquisa}</h1>
+                        </div>
 
                         <div className="nav-filtros">
                             <div className="filtros"> 
@@ -182,20 +195,107 @@ export function Search() {
                             
                             <hr className="line" /> 
 
-                            {professores? 
-                                <FiltroContextual 
-                                    filtro1="Disponibilidade"
-                                    filtro2="Modalidade"
-                                />
+                            {professores ?
+                                <Box sx={{ 
+                                    display: 'flex',
+                                    flexDirection: 'row',
+                                    alignItems: 'flex-start',
+                                    marginTop: '16px',
+                                    marginBottom: '16px'
+                                }}>
+                                    <Filtro 
+                                        nome="Disponibilidade"
+                                        idFiltro="status"
+                                        value={disponibilidade}
+                                        onChange={handleChangeDisponibilidade}
+                                        itens={[
+                                            {
+                                                nome: "Disponível",
+                                                value: 1
+                                            },
+                                            {
+                                                nome: "Indisponível",
+                                                value: 2
+                                            },
+                                            {
+                                                nome: "Em análise",
+                                                value: 3
+                                            }
+                                        ]}
+                                    />
+
+                                    <Filtro 
+                                        nome="Modalidade"
+                                        idFiltro="modalidade"
+                                        value={preferenciaModalidade}
+                                        onChange={handleChangePreferenciaModalidade}
+                                        itens={[
+                                            {
+                                                nome: "Artigo científico",
+                                                value: 1
+                                            },
+                                            {
+                                                nome: "Relatório Técnico",
+                                                value: 2
+                                            },
+                                            {
+                                                nome: "Monografia",
+                                                value: 3
+                                            }
+                                        ]}
+                                    />
+                                </Box>
                             :
-                                <FiltroContextual 
-                                    filtro1="Semestre"
-                                    filtro2="Modalidade"
-                                />
+                                <Box sx={{ 
+                                    display: 'flex',
+                                    flexDirection: 'row',
+                                    alignItems: 'flex-start',
+                                    marginTop: '16px',
+                                    marginBottom: '16px'
+                                }}>
+                                    <Filtro 
+                                        nome="Semestre"
+                                        idFiltro="semestre"
+                                        value={semestre}
+                                        onChange={handleChangeSemestre}
+                                        itens={[
+                                            {
+                                                nome: "2021.2",
+                                                value: 20212
+                                            },
+                                            {
+                                                nome: "2021.1",
+                                                value: 20211
+                                            },
+                                            {
+                                                nome: "2020.2",
+                                                value: 20202
+                                            }
+                                        ]}
+                                    />
+
+                                    <Filtro 
+                                        nome="Modalidade"
+                                        idFiltro="modalidade"
+                                        value={modalidade}
+                                        onChange={handleChangeModalidade}
+                                        itens={[
+                                            {
+                                                nome: "Artigo científico",
+                                                value: 1
+                                            },
+                                            {
+                                                nome: "Relatório Técnico",
+                                                value: 2
+                                            },
+                                            {
+                                                nome: "Monografia",
+                                                value: 3
+                                            }
+                                        ]}
+                                    />
+                                </Box>
                             }
-
-                            <DropdownExampleClearable />
-
                         </div>
 
                         <MenuProfessores 

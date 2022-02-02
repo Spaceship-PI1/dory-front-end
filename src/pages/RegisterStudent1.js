@@ -1,6 +1,17 @@
 import React, { useState } from "react";
 import Modal from 'react-modal';
 
+import Checkbox from '@mui/material/Checkbox';
+import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
+
+import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
+
 import NavBarGlobal from "../components/NavBarGlobal";
 import TextArea from "../components/TextArea";
 import ButtonModal from "../components/ButtonModal";
@@ -11,11 +22,35 @@ import '../styles/registerStudent.css';
 
 Modal.setAppElement('#root');
 
+const CustomCheckbox = styled(Checkbox)(({ theme }) => ({
+    color: theme.status.danger,
+    '&.Mui-checked': {
+      color: theme.status.danger,
+    },
+    margin: 12, 
+    borderRadius: 12
+}));
+
+const theme = createTheme({
+    status: {
+      danger: '#506DD8',
+    },
+  });
+
 export function RegisterStudent1() {
     const [modalInteresses, setModalInteresses] = useState(false);
+    const [open, setOpen] = useState(false);
 
     const handleCloseModalInteresses = () => setModalInteresses(false);
     const handleOpenModalInteresses = () => setModalInteresses(true);
+
+    const handleClickOpen = () => {
+        setOpen(true);
+      };
+    
+      const handleClose = () => {
+        setOpen(false);
+      };
 
     const onSubmit = (e) => e.preventDefault();
 
@@ -33,6 +68,9 @@ export function RegisterStudent1() {
     return (
         <div>
             <NavBarGlobal />
+            <ThemeProvider theme={theme}>
+                <CustomCheckbox defaultChecked  sx={{ '& .MuiSvgIcon-root': { fontSize: 28 } }} />
+            </ThemeProvider>
 
             <section className="container" id="register-student">
                 <form onSubmit={onSubmit}>
@@ -89,6 +127,34 @@ export function RegisterStudent1() {
                                         <button onClick={handleCloseModalInteresses}>Close</button>
                                     </div>
                                 </Modal>
+
+                                <Button variant="outlined" onClick={handleClickOpen}>
+                                    Open form dialog
+                                </Button>
+
+                                <Dialog open={open} onClose={handleClose}>
+                                    <DialogTitle>Subscribe</DialogTitle>
+                                    <DialogContent>
+                                    <DialogContentText>
+                                        To subscribe to this website, please enter your email address here. We
+                                        will send updates occasionally.
+                                    </DialogContentText>
+                                    <TextField
+                                        autoFocus
+                                        margin="dense"
+                                        id="name"
+                                        label="Email Address"
+                                        type="email"
+                                        fullWidth
+                                        variant="standard"
+                                    />
+                                    </DialogContent>
+                                    <DialogActions>
+                                    <Button onClick={handleClose}>Cancel</Button>
+                                    <Button onClick={handleClose}>Subscribe</Button>
+                                    </DialogActions>
+                                </Dialog>
+
 
                             </div>
                         </div>
