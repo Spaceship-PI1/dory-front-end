@@ -1,10 +1,10 @@
 import React from "react";
 
 import NavBarGlobal from "../components/NavBarGlobal";
-import CardGroup from "../components/CardGroup";
+import NavInteresses from "../components/NavInteresses";
 import NavFiltrosContextuais from "../components/NavFiltrosContextuais";
-
-import search from '../assets/icons/search-gray.svg';
+import SearchInput from "../components/InputSearch";
+import CardGroup from "../components/CardGroup";
  
 import '../styles/search.css';
 
@@ -124,25 +124,9 @@ export function ShortcutNavBar({ status }) {
             <NavBarGlobal />
 
             <section className="container" id="search">
-                <div className="interesses-container">
-                    <p>Seus interesses</p>
-                    <ul className="interesses-list-tags">
-                        { user.interesses.map((inter, index) => <li key={index}>{inter}</li>)}
-                    </ul>
-                </div>
+                <NavInteresses data={user.interesses}/>
 
-                <div className="input-container">
-                    <button>
-                        <img className="search-icon" src={search} alt="Ícone de pesquisa" />
-                    </button>
-                    
-                    <input 
-                        className="input-search"
-                        name="search"
-                        type="text"
-                        placeholder="Pesquise sobre um orientador..."
-                    />
-                </div>
+                <SearchInput />
 
                 <div className="resultados-container">
                     <div className="item-resultado">
