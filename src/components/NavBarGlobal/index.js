@@ -6,23 +6,31 @@ import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import Avatar from '@mui/material/Avatar';
+
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 import logo from '../../assets/logo-negativa.svg';
 import envelope from '../../assets/icons/envelope.svg';
-import imgPerfil from '../../assets/perfil.png';
 
 import './style.css';
 
 export default function NavBarGlobal() {
-    const [anchorEl, setAnchorEl] = useState(null);
-    const open = Boolean(anchorEl);
+    const srcPerfil = "https://images.pexels.com/photos/3769021/pexels-photo-3769021.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940";
 
-    const handleClick = (e) => setAnchorEl(e.currentTarget);
-    const handleClose = () => setAnchorEl(null);
+    const user = {
+        id: 0,
+        foto: srcPerfil,
+        nome: "Alissa",
+        perfil: "aluno",
+        solicitacoesPendentes: 3 
+    }
 
-    const perfil = "aluno";
-    const solicitacoesPendentes = 3;
+    const [menu, setMenu] = useState(null);
+    const open = Boolean(menu);
+
+    const handleClick = (e) => setMenu(e.currentTarget);
+    const handleClose = () => setMenu(null);
 
     return (
         <nav className="container">
@@ -50,7 +58,7 @@ export default function NavBarGlobal() {
                             <img className="solicitacoes-icon" src={envelope} alt="ícone de solicitação" />
                         </div>
 
-                        {solicitacoesPendentes > 0 ? <div className="badge">{solicitacoesPendentes}</div> : null}
+                        {user.solicitacoesPendentes > 0 ? <div className="badge">{user.solicitacoesPendentes}</div> : null}
                     </div>
 
                     <Link className="access"
@@ -70,12 +78,16 @@ export default function NavBarGlobal() {
                         marginLeft: '20px'
                     }}
                 >   
-                    <Avatar 
-                        alt="Cindy Baker" 
-                        src={imgPerfil} 
-                        sx={{ width: 32, height: 32, marginTop: 1 }}
-                    />
-
+                    {user.foto ? 
+                        <Avatar 
+                            alt="Cindy Baker" 
+                            src={user.foto} 
+                            sx={{ width: 34, height: 34, marginTop: 1, marginBottom: -0.3 }}
+                        />
+                    :
+                        <AccountCircleIcon sx={{ fontSize: 34, color: 'white', marginTop: 1, marginBottom: -0.3 }} /> 
+                    }
+              
                     <Button
                         className="access"
                         id="basic-button"
@@ -90,19 +102,19 @@ export default function NavBarGlobal() {
                             fontWeight: 500
                         }}
                     >
-                        Alissa
+                        {user.nome}
                     </Button>
 
                     <Menu
                         id="basic-menu"
-                        anchorEl={anchorEl}
+                        anchorEl={menu}
                         open={open}
                         onClose={handleClose}
                         MenuListProps={{
                         'aria-labelledby': 'basic-button',
                         }}
                     >
-                    {perfil === "professor" ?
+                    {user.perfil === "professor" ?
                         <>
                             <MenuItem onClick={() => {}} sx={{fontSize: '1.4rem'}}>Ver Perfil</MenuItem>
                             <MenuItem onClick={() => {}} sx={{fontSize: '1.4rem'}}>Ver "Meus TCCs"</MenuItem>
