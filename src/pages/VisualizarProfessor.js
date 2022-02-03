@@ -81,7 +81,7 @@ export function VisualizarProfessor() {
 
     return (
         <div>
-            <NavBarGlobal />
+            <NavBarGlobal login={true} />
 
             <nav className="container nav-perfil">
                 <h2>Liandro Roger</h2>

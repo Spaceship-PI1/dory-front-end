@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup"
 import * as yup from "yup";
 
-import NavBar from "../components/NavBarNoLogin";
+import NavBarGlobal from "../components/NavBarGlobal";
 import Input from "../components/Input";
 
 import '../styles/login.css';
@@ -24,7 +24,7 @@ export function Login() {
 
     return (
         <div>
-            <NavBar />
+            <NavBarGlobal login={false} />
 
             <section className="container" id="login">
                 <form onSubmit={handleSubmit(onSubmit)}>

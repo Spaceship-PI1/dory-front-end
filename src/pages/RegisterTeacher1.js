@@ -12,7 +12,7 @@ import '../styles/registerStudent.css';
 export function RegisterTeacher1() {
     return (
         <div>
-            <NavBarGlobal />
+            <NavBarGlobal login={true} />
 
             <section className="container" id="register-student">
                 <form onSubmit={() => {}}>

@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup"
 import * as yup from "yup";
 
-import NavBar from "../components/NavBarNoLogin";
+import NavBarGlobal from "../components/NavBarGlobal";
 import Input from "../components/Input";
 import RadioButton from "../components/RadioButton";
 
@@ -26,7 +26,7 @@ export function Register() {
 
     return (
         <div>
-            <NavBar />
+            <NavBarGlobal login={false} />
 
             <section className="container" id="register">
                 <form onSubmit={handleSubmit(onSubmit)}>

@@ -30,7 +30,7 @@ export function VisualizarTCC() {
 
     return (
         <div>
-            <NavBarGlobal />
+            <NavBarGlobal login={true} />
 
             <div className="container  interesses-container">
                 <p>Seus interesses</p>

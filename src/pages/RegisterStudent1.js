@@ -67,7 +67,8 @@ export function RegisterStudent1() {
 
     return (
         <div>
-            <NavBarGlobal />
+            <NavBarGlobal login={true} />
+            
             <ThemeProvider theme={theme}>
                 <CustomCheckbox defaultChecked  sx={{ '& .MuiSvgIcon-root': { fontSize: 28 } }} />
             </ThemeProvider>

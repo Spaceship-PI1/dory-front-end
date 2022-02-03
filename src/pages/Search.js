@@ -129,7 +129,7 @@ export function Search() {
 
     return (
         <div>
-            <NavBarGlobal />
+            <NavBarGlobal login={true} />
 
             <section className="container" id="search">
                 <NavInteresses data={user.interesses}/>

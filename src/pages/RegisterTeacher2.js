@@ -15,7 +15,7 @@ export function RegisterTeacher2() {
 
     return (
         <div>
-            <NavBarGlobal />
+            <NavBarGlobal login={true} />
 
             <section className="container" id="register-student">
                 <form onSubmit={onSubmit}>

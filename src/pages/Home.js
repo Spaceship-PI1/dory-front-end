@@ -14,7 +14,7 @@ export function Home() {
 
     return (
         <div>
-            <NavBarGlobal />
+            <NavBarGlobal login={true} />
 
             <section className="container" id="home">
                 <NavInteresses data={user.interesses}/>

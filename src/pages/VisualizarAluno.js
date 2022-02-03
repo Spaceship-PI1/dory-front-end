@@ -24,7 +24,7 @@ export function VisualizarAluno() {
 
     return (
         <div>
-            <NavBarGlobal />
+            <NavBarGlobal login={true} />
 
             <nav className="container nav-perfil">
                 <h2>{aluno.nome}</h2>
