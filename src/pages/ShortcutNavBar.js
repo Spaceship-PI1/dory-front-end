@@ -1,7 +1,7 @@
 import React from "react";
 
 import NavBarGlobal from "../components/NavBarGlobal";
-import MenuCards from "../components/MenuCards";
+import CardGroup from "../components/CardGroup";
 import NavFiltrosContextuais from "../components/NavFiltrosContextuais";
 
 import search from '../assets/icons/search-gray.svg';
@@ -153,7 +153,7 @@ export function ShortcutNavBar({ status }) {
 
                         <NavFiltrosContextuais status={status} />
 
-                        <MenuCards 
+                        <CardGroup 
                             status={status}
                             list={status == "TCCs" ? listTCCs : listProfessores}
                         />

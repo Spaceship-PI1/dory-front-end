@@ -4,7 +4,7 @@ import CardTCC from "../CardTCC";
 
 import './style.css';
 
-export default function MenuCards({ status, list }) {
+export default function CardGroup({ status, list }) {
     return (
         <ul className="cards">
             {status == "professores" && list.map(professor => (

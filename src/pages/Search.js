@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import NavBarGlobal from "../components/NavBarGlobal";
 import ButtonNav from "../components/ButtonNav";
-import MenuCards from "../components/MenuCards";
+import CardGroup from "../components/CardGroup";
 import NavFiltrosContextuais from "../components/NavFiltrosContextuais";
 
 import search from '../assets/icons/search-gray.svg';
@@ -13,15 +13,18 @@ export function Search() {
     const [status, setStatus] = useState("professores");
 
     const handleSetProfessores = () => setStatus("professores");
-    const handleSetTCCs = () => setStatus("TCCs")
+    const handleSetTCCs = () => setStatus("TCCs");
 
+    const user = {
+        interesses : [
+            'Jogos', 'Design', 'Criação de personagens', 'Ilustração', 'Desenho' 
+        ]
+    }
+
+    const pesquisa = "Jogos";
 
     const srcPerfil = "https://images.pexels.com/photos/7163364/pexels-photo-7163364.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500";
-    const pesquisa = "Jogos";
-    const interesses = [
-        'Jogos', 'Design', 'Criação de personagens', 'Ilustração', 'Desenho' 
-    ]
-
+    
     const listProfessores = [
         {
             id: 0,
@@ -132,7 +135,7 @@ export function Search() {
                 <div className="interesses-container">
                     <p>Seus interesses</p>
                     <ul className="interesses-list-tags">
-                        { interesses.map((inter, index) => <li key={index}>{inter}</li>)}
+                        { user.interesses.map((inter, index) => <li key={index}>{inter}</li>)}
                     </ul>
                 </div>
 
@@ -176,7 +179,7 @@ export function Search() {
                             <NavFiltrosContextuais status={status} />
                         </div>
 
-                        <MenuCards 
+                        <CardGroup 
                             status={status}
                             list={status == "TCCs" ? listTCCs : listProfessores}
                         />

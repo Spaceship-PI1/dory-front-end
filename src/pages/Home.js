@@ -2,33 +2,26 @@ import React, { useState } from "react";
 
 import NavBarGlobal from "../components/NavBarGlobal";
 import ButtonNav from "../components/ButtonNav";
-import MenuProfessores from "../components/MenuProfessores";
-import MenuTCCs from "../components/MenuTCCs";
+import CardGroup from "../components/CardGroup";
+import NavFiltrosContextuais from "../components/NavFiltrosContextuais";
 
 import search from '../assets/icons/search-gray.svg';
  
 import '../styles/home.css';
 
 export function Home() {
-    const [professores, setProfessores] = useState(true);
-    const [TCCs, setTCCs] = useState(false);
+    const [status, setStatus] = useState("professores");
+
+    const handleSetProfessores = () => setStatus("professores");
+    const handleSetTCCs = () => setStatus("TCCs");
+
+    const user = {
+        interesses : [
+            'Jogos', 'Design', 'Criação de personagens', 'Ilustração', 'Desenho' 
+        ]
+    }
 
     const srcPerfil = "https://images.pexels.com/photos/7163364/pexels-photo-7163364.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500";
-
-    const interesses = [
-        'Jogos', 'Design', 'Criação de personagens', 'Ilustração', 'Desenho' 
-    ]
-
-    const handleSetProfessores = () => {
-        setProfessores(true);
-        setTCCs(false)
-    }
-    const handleSetTCCs = () => {
-        setTCCs(true);
-        setProfessores(false);
-    } 
-
-    console.log(professores, TCCs);
 
     const listProfessores = [
         {
@@ -92,7 +85,7 @@ export function Home() {
                 <div className="interesses-container">
                     <p>Seus interesses</p>
                     <ul className="interesses-list-tags">
-                        { interesses.map((inter, index) => <li key={index}>{inter}</li>)}
+                        { user.interesses.map((inter, index) => <li key={index}>{inter}</li>)}
                     </ul>
                 </div>
 
@@ -110,7 +103,7 @@ export function Home() {
                 </div>
 
                 <div className="resultados-container">
-                    {interesses.map((inter, index) => (
+                    {user.interesses.map((inter, index) => (
                         <div key={index} className="item-resultado">
                             <h1>{inter}</h1>
 
@@ -119,28 +112,25 @@ export function Home() {
                                     <ButtonNav 
                                         setStatus={handleSetProfessores}
                                         name="Professores"
-                                        id={professores ? "selected" : null}
+                                        id={status == "professores" ? "selected" : null}
                                     />
 
                                     <ButtonNav 
                                         setStatus={handleSetTCCs}
                                         name="TCCs"
-                                        id={TCCs ? "selected" : null}
+                                        id={status == "TCCs" ? "selected" : null}
                                     />
                                 </div>
                                 
                                 <hr className="line" /> 
+
+                                <NavFiltrosContextuais status={status} />
                             </div>
 
-                            <MenuProfessores 
-                                status={professores}
-                                professores={listProfessores}
-                            />
-
-                            <MenuTCCs 
-                                status={TCCs}
-                                TCCs={listTCCs}
-                            />
+                            <CardGroup 
+                            status={status}
+                            list={status == "TCCs" ? listTCCs : listProfessores}
+                        />
                         </div>
                     ))}
                 </div>
