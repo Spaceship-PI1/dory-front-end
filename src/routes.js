@@ -11,6 +11,7 @@ import { Search } from "./pages/Search";
 import { VisualizarProfessor } from "./pages/VisualizarProfessor";
 import { VisualizarAluno } from "./pages/VisualizarAluno";
 import { VisualizarTCC } from "./pages/VisualizarTCC";
+import { ShortcutNavBar } from "./pages/ShortcutNavBar";
 
 import { Home } from "./pages/Home";
 
@@ -32,6 +33,9 @@ function RoutesApp() {
         <Route path="/visualizarProfessor" element={<VisualizarProfessor />} />
         <Route path="/visualizarAluno" element={<VisualizarAluno />} />
         <Route path="/visualizarTCC" element={<VisualizarTCC />} />
+
+        <Route path="/professores" element={<ShortcutNavBar status="professores" />} />
+        <Route path="/TCCs" element={<ShortcutNavBar status="TCCs" />} />
       </Routes>
     </Router>
   );

@@ -23,7 +23,7 @@ export default function NavBarGlobal() {
         foto: srcPerfil,
         nome: "Alissa",
         perfil: "aluno",
-        solicitacoesPendentes: 3 
+        solicitacoesPendentes: 0 
     }
 
     const [menu, setMenu] = useState(null);
@@ -35,17 +35,16 @@ export default function NavBarGlobal() {
     return (
         <nav className="container">
             <div className="div-logo">
-                <img className="logo" src={logo} alt="Dory" />
+                <Link to="/home">
+                    <img className="logo" src={logo} alt="Dory" />
+                </Link>
 
                 <div className="quick-access">
-                    <Link className="access"
-                        to={() => {}}
-                    >
+                    <Link className="access" to="/professores">
                         Professores
                     </Link>
-                    <Link className="access"
-                        to={() => {}}
-                    >
+                    
+                    <Link className="access" to="/TCCs">
                         TCCs
                     </Link>
                 </div>
