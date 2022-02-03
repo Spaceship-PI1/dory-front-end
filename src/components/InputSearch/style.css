@@ -1,0 +1,19 @@
+.input-container {
+    display: flex;
+    align-items: center;
+
+    border: 1px solid var(--gray-4);
+    border-radius: 12px;
+    padding: 16px;
+}
+
+.input-container button {
+    cursor: pointer;
+    background: none;
+}
+
+.input-container .input-search {
+    margin-left: 12px;
+    width: 100%;
+    color: var(--black-purple);
+}

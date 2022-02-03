@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 
 import NavBarGlobal from "../components/NavBarGlobal";
-import ButtonNav from "../components/ButtonNav";
-import CardGroup from "../components/CardGroup";
+import NavInteresses from "../components/NavInteresses";
+import NavFiltrosGlobais from "../components/NavFiltrosGlobais";
 import NavFiltrosContextuais from "../components/NavFiltrosContextuais";
+import SearchInput from "../components/InputSearch";
+import CardGroup from "../components/CardGroup";
 
-import search from '../assets/icons/search-gray.svg';
- 
 import '../styles/search.css';
 
 export function Search() {
@@ -132,25 +132,9 @@ export function Search() {
             <NavBarGlobal />
 
             <section className="container" id="search">
-                <div className="interesses-container">
-                    <p>Seus interesses</p>
-                    <ul className="interesses-list-tags">
-                        { user.interesses.map((inter, index) => <li key={index}>{inter}</li>)}
-                    </ul>
-                </div>
+                <NavInteresses data={user.interesses}/>
 
-                <div className="input-container">
-                    <button>
-                        <img className="search-icon" src={search} alt="Ícone de pesquisa" />
-                    </button>
-                    
-                    <input 
-                        className="input-search"
-                        name="search"
-                        type="text"
-                        placeholder="Pesquise sobre um orientador..."
-                    />
-                </div>
+                <SearchInput />
 
                 <div className="resultados-container">
                     <div className="item-resultado">
@@ -160,19 +144,11 @@ export function Search() {
                         </div>
 
                         <div className="nav-filtros">
-                            <div className="filtros"> 
-                                <ButtonNav 
-                                    setStatus={handleSetProfessores}
-                                    name="Professores"
-                                    id={status == "professores" ? "selected" : null}
-                                />
-
-                                <ButtonNav 
-                                    setStatus={handleSetTCCs}
-                                    name="TCCs"
-                                    id={status == "TCCs" ? "selected" : null}
-                                />
-                            </div>
+                            <NavFiltrosGlobais 
+                                status={status}
+                                setProfessores={handleSetProfessores}
+                                setTCCs={handleSetTCCs}
+                            />
                             
                             <hr className="line" /> 
 

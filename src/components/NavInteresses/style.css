@@ -1,0 +1,28 @@
+.interesses-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    margin: 48px 0;
+}
+
+.interesses-container p {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 1.4rem;
+    color: var(--gray-3);
+    margin-right: 16px;
+}
+
+.interesses-container .interesses-list-tags {
+    list-style: none;
+    display: flex;
+}
+
+.interesses-container .interesses-list-tags li {
+    background: var(--blue-light);
+    color: var(--black-purple);
+    padding: 12px 18px;
+    border-radius: 36px;
+    margin-right: 12px;
+}

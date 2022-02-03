@@ -1,12 +1,10 @@
 import React from "react";
 
 import NavBarGlobal from "../components/NavBarGlobal";
+import NavInteresses from "../components/NavInteresses";
+import SearchInput from "../components/InputSearch";
 import Carrossel from "../components/Carrossel";
-
-import search from '../assets/icons/search-gray.svg';
  
-import '../styles/home.css';
-
 export function Home() {
     const user = {
         interesses : [
@@ -19,25 +17,9 @@ export function Home() {
             <NavBarGlobal />
 
             <section className="container" id="home">
-                <div className="interesses-container">
-                    <p>Seus interesses</p>
-                    <ul className="interesses-list-tags">
-                        { user.interesses.map((inter, index) => <li key={index}>{inter}</li>)}
-                    </ul>
-                </div>
+                <NavInteresses data={user.interesses}/>
 
-                <div className="input-container">
-                    <button>
-                        <img className="search-icon" src={search} alt="Ícone de pesquisa" />
-                    </button>
-                    
-                    <input 
-                        className="input-search"
-                        name="search"
-                        type="text"
-                        placeholder="Pesquise sobre um orientador..."
-                    />
-                </div>
+                <SearchInput />
 
                 <div className="resultados-container">
                     {user.interesses.map((inter, index) => (

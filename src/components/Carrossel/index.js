@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import NavFiltrosContextuais from "../NavFiltrosContextuais";
+import NavFiltrosGlobais from "../NavFiltrosGlobais";
 import CardGroup from "../CardGroup";
-import ButtonNav from "../ButtonNav";
 
 import './style.css';
 
@@ -71,24 +70,14 @@ export default function Carrossel({ index, interesse }) {
         <div key={index} className="item-resultado">
             <h1>{interesse}</h1>
 
-            <div className="nav-filtros">
-                <div className="filtros"> 
-                    <ButtonNav 
-                        setStatus={handleSetProfessores}
-                        name="Professores"
-                        id={status == "professores" ? "selected" : null}
-                    />
-
-                    <ButtonNav 
-                        setStatus={handleSetTCCs}
-                        name="TCCs"
-                        id={status == "TCCs" ? "selected" : null}
-                    />
-                </div>
-                
+            <div className="nav-filtros carrossel">
+                <NavFiltrosGlobais 
+                    status={status}
+                    setProfessores={handleSetProfessores}
+                    setTCCs={handleSetTCCs}
+                />
+    
                 <hr className="line" /> 
-
-                <NavFiltrosContextuais status={status} />
             </div>
 
             <CardGroup 
