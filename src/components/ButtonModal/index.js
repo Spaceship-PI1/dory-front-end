@@ -4,7 +4,7 @@ import './style.css';
 
 export default function ButtonModal({ className, required, name, question, placeholder, onClick}) {
     return (
-        <div>
+        <div id="button-modal">
             <div className="label-required">
                 <label for={name}>{question}</label>
                 <label id={required}>*</label>

@@ -2,24 +2,67 @@ import React, { useState } from "react";
 
 import NavBarGlobal from "../components/NavBarGlobal";
 import Input from "../components/Input";
+import InputImage from "../components/InputImage";
 import TextArea from "../components/TextArea";
 import RadioButton from "../components/RadioButton";
- 
-import '../styles/registerStudent.css';
+import Modal from "../components/Modal";
+import Paginacao from "../components/Paginacao";
 
-export function RegisterStudent2() {
-    const [page, setPage] = useState(1);
-    const handleChange = (e, value) => {
-        setPage(value);
+import '../styles/cadastro.css';
+
+export function CadastroAluno() {
+    const [page, setPage] = useState(true);
+    
+    const handlePage = () => setPage(!page);
+    const onSubmit = (e) => e.preventDefault();
+
+    const user = {
+        nome: 'Alissa Fernandes',
+        email: 'alifernandes@gmail.com'
     }
 
     return (
         <div>
             <NavBarGlobal login={true} />
-
+            
             <section className="container" id="register-student">
-                <form onSubmit={() => {}}>
-                    <h1>Sobre o seu TCC</h1>
+                <form onSubmit={onSubmit}>
+                    {page ? 
+                        <>
+                            <h1>Identificação</h1>
+                            <div className="columns-inputs">
+                                <InputImage user={user} />
+
+                                <hr className="line-separator" id="line-page-1" />
+
+                                <div className="div-inputs">
+                                    <TextArea
+                                        name="Sobre você"
+                                        question="Conte-me sobre você em um tweet"
+                                        placeholder="Ex: Sou apaixonada por design.."
+                                    />
+
+                                <Modal 
+                                    idModal="interesses"
+                                    question="Quais são seus interesses em pesquisa?"
+                                    title="Adicionar interesses"
+                                    desc="Conte-me quais são suas áreas de interesse."
+                                    body={
+                                        <Input 
+                                            name="title"
+                                            type="text"
+                                            placeholder="Ex: Desenho 2"
+                                            className="inputText withoutMargin"
+                                            size="large"
+                                        />
+                                    }
+                                />
+                                </div>
+                            </div>
+                        </>
+                    :
+                    <>
+                        <h1>Sobre o seu TCC</h1>
                         <div className="columns-inputs">
                             <div className="div-inputs">
                                 <TextArea
@@ -61,7 +104,7 @@ export function RegisterStudent2() {
                                 </div>
                             </div>
 
-                            <hr id="line-page-2" />
+                            <hr className="line-separator" id="line-page-2" />
 
                             <div className="div-inputs">
                                 <div className="label-required question-checkbox">
@@ -93,6 +136,8 @@ export function RegisterStudent2() {
                                     required="required"
                                     type="text"
                                     placeholder="Ex: 2021.2"
+                                    className="inputText"
+                                    size="small"
                                 />
                                 <div id="nao-sei">
                                     <RadioButton
@@ -102,16 +147,10 @@ export function RegisterStudent2() {
                                 </div>
                             </div>
                         </div>
-                                                    
-                    <div className="div-buttons">
-                        <button className="default">
-                            Cancelar
-                        </button>
+                    </>
+                    }
 
-                        <button className="yellow" type="submit">
-                            Continuar
-                        </button> 
-                    </div>
+                    <Paginacao page={page} handlePage={handlePage} />
                 </form>
             </section>
         </div>

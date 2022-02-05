@@ -1,6 +1,6 @@
 label {
     color: var(--black-purple);
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     font-weight: 500;
     margin-bottom: 10px;
 }
@@ -21,7 +21,7 @@ p.required {
 }
 
 textarea {
-    width: 445px;
+    width: 380px;
     background: var(--white);
     color: var(--black-purple);
     border: 1px solid var(--gray-4);

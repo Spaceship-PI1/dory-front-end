@@ -3,10 +3,9 @@ import { BrowserRouter as Router, Routes, Route} from "react-router-dom";
 
 import { Login }  from "./pages/Login";
 import { Register } from "./pages/Register";
-import { RegisterStudent1 } from "./pages/RegisterStudent1";
-import { RegisterStudent2 } from "./pages/RegisterStudent2";
-import { RegisterTeacher1 } from "./pages/RegisterTeacher1";
-import { RegisterTeacher2 } from "./pages/RegisterTeacher2";
+import { CadastroAluno } from "./pages/CadastroAluno";
+import { CadastroProfessor } from "./pages/CadastroProfessor";
+
 import { Search } from "./pages/Search";
 import { VisualizarProfessor } from "./pages/VisualizarProfessor";
 import { VisualizarAluno } from "./pages/VisualizarAluno";
@@ -19,16 +18,12 @@ function RoutesApp() {
   return (
     <Router>
       <Routes>
-        <Route path="/" exact element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/registerStudent" element={<RegisterStudent1 />} />
-        <Route path="/registerStudent/page=1" element={<RegisterStudent1 />} />
-        <Route path="/registerStudent/page=2" element={<RegisterStudent2 />} />
-        <Route path="/registerTeacher" element={<RegisterTeacher1 />} />
-        <Route path="/registerTeacher/page=1" element={<RegisterTeacher1 />} />
-        <Route path="/registerTeacher/page=2" element={<RegisterTeacher2 />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/cadastro" element={<Register />} />
+        <Route path="/cadastro/aluno" element={<CadastroAluno />} />
+        <Route path="/cadastro/professor" element={<CadastroProfessor />} />
 
-        <Route path="/home" element={<Home />} />
+        <Route path="/" exact element={<Home />} />
         <Route path="/search" element={<Search />} />
         <Route path="/visualizarProfessor" element={<VisualizarProfessor />} />
         <Route path="/visualizarAluno" element={<VisualizarAluno />} />

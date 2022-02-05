@@ -1,6 +1,6 @@
 label {
     color: var(--black-purple);
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     font-weight: 500;
     margin-bottom: 12px;
 }
@@ -10,13 +10,13 @@ label {
 }
 
 .label-required #required {
+    display: block;
     color: var(--red);
-    font-size: 1.6rem;
+    font-size: 1.8rem;
     margin-left: 4px;
 }
 
 .inputText {
-    width: 445px;
     background: var(--white);
     color: var(--black-purple);
     border: 1px solid var(--gray-4);
@@ -26,10 +26,31 @@ label {
     margin-bottom: 28px;
 }
 
+.inputText.withoutMargin {
+    margin-bottom: 12px;
+}
+
+.inputText.normal {
+    width: 380px; 
+}
+
+.inputText.large {
+    width: 445px;
+}
+
+.inputText.small {
+    width: 120px;
+    margin-right: 16px;
+}
+
 .inputText:hover {
     border-color: var(--blue);
 }
 
 .inputText.has-error {
     border-color: var(--red);
+}
+
+.asterisco {
+    display: none;
 }
