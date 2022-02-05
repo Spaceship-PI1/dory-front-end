@@ -36,3 +36,21 @@
 .asterisco {
     display: none;
 }
+
+.div-forgot-password {
+    display: flex;
+    justify-content: space-between;
+}
+
+.div-forgot-password .forgot-password {
+    color: var(--blue);
+    cursor: pointer;
+    font-size: 1.6rem;
+    font-weight: 500;
+    align-self: flex-end;
+    margin-bottom: 12px;
+}
+
+#login .div-forgot-password .forgot-password:hover {
+    color: var(--blue-hover);
+}

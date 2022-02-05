@@ -1,0 +1,55 @@
+#auth form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#auth form h1 {
+    color: var(--blue);
+    font-size: 2.8rem;
+    margin-top: 48px;
+}
+
+#auth form .div-inputs {
+    display: flex;
+    flex-direction: column;
+
+    margin-top: 48px;
+}
+
+#auth form button.yellow {
+    background: var(--yellow);
+    border: 0;
+    border-radius: 12px;
+    width: 380px;
+
+    margin-top: 8px;
+    padding: 16px 0;
+    font-size: 1.8rem;
+
+    font-weight: 500;
+    color: var(--black-purple);
+}
+
+#auth form button.yellow:hover {
+    background: var(--yellow-hover);
+    cursor: pointer;
+}
+
+#auth .sign-up {
+    color: var(--blue);
+    font-size: 1.6rem;
+    font-weight: 500;
+    margin-top: 24px;
+    margin-bottom: 12px;
+}
+
+#auth .sign-up:hover {
+    color: var(--blue-hover);
+    cursor: pointer;
+}
+
+#auth .div-radio {
+    margin-bottom: 28px;
+}

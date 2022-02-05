@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup"
 import * as yup from "yup";
@@ -8,7 +7,7 @@ import * as yup from "yup";
 import NavBarGlobal from "../components/NavBarGlobal";
 import Input from "../components/Input";
 
-import '../styles/login.css';
+import '../styles/auth.css';
 
 const schema = yup.object({
     email: yup.string().required('O email é obrigatório'),
@@ -26,7 +25,7 @@ export function Login() {
         <div>
             <NavBarGlobal login={false} />
 
-            <section className="container" id="login">
+            <section className="container" id="auth">
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <h1>Faça Login</h1>
 
@@ -39,25 +38,21 @@ export function Login() {
                             required="required"
                             placeholder="Ex: alifernandes@gmail.com"
                             className={errors.email? "inputText has-error" : "inputText"}
+                            size="normal"
                         />
                         <p className="error">{errors.email?.message}</p>
 
-                        <div className="div-forgot-password">
-                            <div className="label-required">
-                                <label for="password">Senha</label>
-                                <label id="required">*</label>
-                            </div>
-                            <label id="forgot-password">Esqueceu a senha?</label>
-                        </div>
-                        <input
+                        <Input 
                             {...register("senha")}
-                            for="password"
-                            type="password"
+                            name="senha"
+                            type="text"
+                            question="Senha"
+                            required="required"
                             placeholder="Não escreva 123"
                             className={errors.senha? "inputText has-error" : "inputText"}
+                            size="normal"
                         />
                         <p className="error">{errors.senha?.message}</p>
-
                     </div>
 
                     <button className="yellow" type="submit">
