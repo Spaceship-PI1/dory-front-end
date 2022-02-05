@@ -64,7 +64,7 @@ export function Login() {
                         Entrar
                     </button>
 
-                    <Link to="/register" className="sign-up">
+                    <Link to="/cadastro" className="sign-up">
                         Não tenho conta
                     </Link>
                 </form>

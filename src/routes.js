@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route} from "react-router-dom";
 
 import { Login }  from "./pages/Login";
-import { Register } from "./pages/Register";
+import { Cadastro } from "./pages/Cadastro";
 import { CadastroAluno } from "./pages/CadastroAluno";
 import { CadastroProfessor } from "./pages/CadastroProfessor";
 
@@ -19,15 +19,15 @@ function RoutesApp() {
     <Router>
       <Routes>
         <Route path="/login" element={<Login />} />
-        <Route path="/cadastro" element={<Register />} />
+        <Route path="/cadastro" element={<Cadastro />} />
         <Route path="/cadastro/aluno" element={<CadastroAluno />} />
         <Route path="/cadastro/professor" element={<CadastroProfessor />} />
 
         <Route path="/" exact element={<Home />} />
-        <Route path="/search" element={<Search />} />
-        <Route path="/visualizarProfessor" element={<VisualizarProfessor />} />
-        <Route path="/visualizarAluno" element={<VisualizarAluno />} />
-        <Route path="/visualizarTCC" element={<VisualizarTCC />} />
+        <Route path="/pesquisa" element={<Search />} />
+        <Route path="/visualizar/professor" element={<VisualizarProfessor />} />
+        <Route path="/visualizar/aluno" element={<VisualizarAluno />} />
+        <Route path="/visualizar/TCC" element={<VisualizarTCC />} />
 
         <Route path="/professores" element={<ShortcutNavBar status="professores" />} />
         <Route path="/TCCs" element={<ShortcutNavBar status="TCCs" />} />

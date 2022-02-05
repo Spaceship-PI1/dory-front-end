@@ -17,7 +17,7 @@ const schema = yup.object({
     senha: yup.string().required('A senha é obrigatória'),
 }).required();
 
-export function Register() {
+export function Cadastro() {
     const { register, handleSubmit, formState: { errors} } = useForm({
         resolver: yupResolver(schema)
     });
@@ -41,6 +41,7 @@ export function Register() {
                             required="required"
                             placeholder="Ex: Alissa"
                             className={errors.nome? "inputText has-error" : "inputText"}
+                            size="large"
                         />
                         <p className="error">{errors.nome?.message}</p>
 
@@ -52,6 +53,7 @@ export function Register() {
                             required="required"
                             placeholder="Ex: Fernandes"
                             className={errors.sobrenome? "inputText has-error" : "inputText"}
+                            size="large"
                         />
                         <p className="error">{errors.sobrenome?.message}</p>
 
@@ -63,6 +65,7 @@ export function Register() {
                             required="required"
                             placeholder="Ex: alifernandes@gmail.com"
                             className={errors.email? "inputText has-error" : "inputText"}
+                            size="large"
                         />
                         <p className="error">{errors.email?.message}</p>
 
@@ -74,6 +77,7 @@ export function Register() {
                             required="required"
                             placeholder="Não escreva 123"
                             className={errors.senha? "inputText has-error" : "inputText"}
+                            size="large"
                         />
                         <p className="error">{errors.senha?.message}</p>
 
@@ -87,8 +91,7 @@ export function Register() {
                                 question="Aluno"
                             />
                             <RadioButton 
-                                
-                                name="professor"
+                                name="prof"
                                 question="Professor"
                             />
                         </div>
@@ -98,13 +101,11 @@ export function Register() {
                         Criar minha conta
                     </button>
 
-                    <Link to="/" className="sign-up">
+                    <Link to="/login" className="sign-up">
                         Já tenho conta
                     </Link>
                 </form>
             </section>
         </div>
-    )
-       
-       
+    )  
 }

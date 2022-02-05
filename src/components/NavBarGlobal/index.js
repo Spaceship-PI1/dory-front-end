@@ -37,7 +37,7 @@ export default function NavBarGlobal({ login }) {
             {login ?
                 <>
                 <div className="div-logo">
-                    <Link to="/home">
+                    <Link to="/">
                         <img className="logo" src={logo} alt="Dory" />
                     </Link>
 
@@ -136,11 +136,13 @@ export default function NavBarGlobal({ login }) {
             </>
             :
             <>
-                <img className="logo" src={logo} alt="Dory" />
+                <Link to="/login">
+                    <img className="logo" src={logo} alt="Dory" />
+                </Link>
 
                 <div className="nav-buttons">
-                    <Link to="/" className="default">Entrar</Link>
-                    <Link to="/register" className="yellow">Criar conta</Link>
+                    <Link to="/login" className="default">Entrar</Link>
+                    <Link to="/cadastro" className="yellow">Criar conta</Link>
                 </div>
             </>
             }
