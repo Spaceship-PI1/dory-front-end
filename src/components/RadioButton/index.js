@@ -2,19 +2,19 @@ import React from "react";
 
 import './style.css';
 
-export default function RadioButton(props) {
+export default function RadioButton({ name, question }) {
     return (
-        <div className="content">
+        <div className="content-radio">
             <input
                 className="radio"
-                id={props.name}
+                id={name}
                 type="radio"
-                value={props.name}
+                value={name}
                 checked={() => {}}
                 onChange={() => {}}
             />  
             <label className="label-radio">
-                {props.question}
+                {question}
             </label>
         </div>
     )

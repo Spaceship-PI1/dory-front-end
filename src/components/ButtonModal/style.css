@@ -1,20 +1,3 @@
-#button-modal label {
-    color: var(--black-purple);
-    font-size: 1.6rem;
-    font-weight: 500;
-    margin-bottom: 12px;
-}
-
-#button-modal .label-required {
-    display: flex;
-}
-
-#button-modal .label-required #required {
-    color: var(--red);
-    font-size: 1.6rem;
-    margin-left: 4px;
-}
-
 .buttonModal {
     width: 380px;
     background: var(--blue);

@@ -1,21 +1,3 @@
-label {
-    color: var(--black-purple);
-    font-size: 1.6rem;
-    font-weight: 500;
-    margin-bottom: 12px;
-}
-
-.label-required {
-    display: flex;
-}
-
-.label-required #required {
-    display: block;
-    color: var(--red);
-    font-size: 1.8rem;
-    margin-left: 4px;
-}
-
 .inputText {
     background: var(--white);
     color: var(--black-purple);

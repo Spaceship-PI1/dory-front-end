@@ -46,7 +46,7 @@ export function CadastroProfessor() {
 
                                     <div className="label-required question-checkbox">
                                         <label for="perfil">Nesse semestre, você está disponível para orientar?</label>
-                                            <label id="required">*</label>
+                                        <label id="required">*</label>
                                     </div>
                                     <div className="list-checkbox">
                                         <RadioButton 
@@ -65,7 +65,7 @@ export function CadastroProfessor() {
 
                                     <div className="label-required question-checkbox">
                                         <label for="perfil">Qual a modalidade de TCC você escolheu?</label>
-                                            <label id="required">*</label>
+                                        <label id="required">*</label>
                                     </div>
                                     <div className="list-checkbox">
                                         <Checkbox 

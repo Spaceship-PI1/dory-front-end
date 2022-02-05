@@ -11,7 +11,7 @@ import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 import logo from '../../assets/logo-negativa.svg';
-import envelope from '../../assets/icons/envelope.svg';
+// import envelope from '../../assets/icons/envelope.svg';
 
 import './style.css';
 
@@ -23,7 +23,7 @@ export default function NavBarGlobal({ login }) {
         foto: srcPerfil,
         nome: "Alissa",
         perfil: "aluno",
-        solicitacoesPendentes: 0 
+        // solicitacoesPendentes: 0 
     }
 
     const [menu, setMenu] = useState(null);
@@ -53,7 +53,7 @@ export default function NavBarGlobal({ login }) {
                 </div>
 
                 <div className="user-access">
-                    <div className="item">
+                    {/* <div className="item">
                         <div className="solicitacoes-notification">
                             <div className="circle-img">
                                 <img className="solicitacoes-icon" src={envelope} alt="ícone de solicitação" />
@@ -67,7 +67,7 @@ export default function NavBarGlobal({ login }) {
                         >
                             Solicitações
                         </Link>
-                    </div>
+                    </div> */}
 
                     <Box 
                         className="item"
@@ -119,14 +119,14 @@ export default function NavBarGlobal({ login }) {
                             <>
                                 <MenuItem onClick={() => {}} sx={{fontSize: '1.4rem'}}>Ver Perfil</MenuItem>
                                 <MenuItem onClick={() => {}} sx={{fontSize: '1.4rem'}}>Ver "Meus TCCs"</MenuItem>
-                                <MenuItem onClick={() => {}} sx={{fontSize: '1.4rem'}}>Ver Solicitações</MenuItem>
+                                {/* <MenuItem onClick={() => {}} sx={{fontSize: '1.4rem'}}>Ver Solicitações</MenuItem> */}
                                 <MenuItem onClick={() => {}} sx={{fontSize: '1.4rem'}}>Atualizar Disponibilidade</MenuItem>
                                 <MenuItem onClick={() => {}} sx={{fontSize: '1.4rem'}}>Sair</MenuItem>
                             </>
                         :
                             <>
                                 <MenuItem onClick={() => {}} sx={{fontSize: '1.4rem'}}>Ver Perfil</MenuItem>
-                                <MenuItem onClick={() => {}} sx={{fontSize: '1.4rem'}}>Ver Solicitações</MenuItem>
+                                {/* <MenuItem onClick={() => {}} sx={{fontSize: '1.4rem'}}>Ver Solicitações</MenuItem> */}
                                 <MenuItem onClick={() => {}} sx={{fontSize: '1.4rem'}}>Sair</MenuItem>
                             </> 
                         }
