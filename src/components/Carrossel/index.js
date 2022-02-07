@@ -21,17 +21,17 @@ export default function Carrossel({ index, interesse }) {
             areas: [
                 'Realidade Virtual', 'Game design', 'Desenvolvimento de jogos', 'Jogos'
             ],
-            status: "disponível" 
+            status: "Disponível" 
         },
         {
             id: 1,
-            foto: srcPerfil,
+            foto: "",
             nome: "Alysson Diniz",
             email: "alysson@virtual.ufc.br",
             areas: [
                 'Realidade Virtual', 'Game design', 'Desenvolvimento de jogos', 'Jogos'
             ],
-            status: "disponível" 
+            status: "indisponível" 
         },
         {
             id: 2,
@@ -41,7 +41,7 @@ export default function Carrossel({ index, interesse }) {
             areas: [
                 'Realidade Virtual', 'Game design', 'Desenvolvimento de jogos', 'Jogos'
             ],
-            status: "disponível" 
+            status: "Análise" 
         }
     ]
 

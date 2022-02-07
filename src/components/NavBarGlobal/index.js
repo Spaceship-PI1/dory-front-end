@@ -81,7 +81,7 @@ export default function NavBarGlobal({ login }) {
                     >   
                         {user.foto ? 
                             <Avatar 
-                                alt="Cindy Baker" 
+                                alt={user.nome}
                                 src={user.foto} 
                                 sx={{ width: 34, height: 34, marginTop: 1, marginBottom: -0.3 }}
                             />
