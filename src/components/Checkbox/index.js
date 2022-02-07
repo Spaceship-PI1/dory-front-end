@@ -2,19 +2,19 @@ import React from "react";
 
 import './style.css';
 
-export default function Checkbox(props) {
+export default function Checkbox({ name, question }) {
     return (
-        <div className="content">
+        <div className="content-checkbox">
             <input
                 className="checkbox"
-                id={props.name}
+                id={name}
                 type="checkbox"
-                value={props.name}
+                value={name}
                 checked={() => {}}
                 onChange={() => {}}
             />  
             <label className="label-checkbox">
-                {props.question}
+                {question}
             </label>
         </div>
     )

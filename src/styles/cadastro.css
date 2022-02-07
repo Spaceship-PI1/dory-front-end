@@ -1,0 +1,57 @@
+#register-student form {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+}
+
+#register-student form h1 {
+    color: var(--blue);
+    font-size: 2.8rem;
+    margin-top: 48px;
+}
+
+#register-student form .columns-inputs {
+    display: flex;
+    flex-direction: row;
+    margin-top: 38px;
+}
+
+#register-student form .columns-inputs .line-separator {
+    border: 0.5px solid var(--gray-5);
+    margin: 0 42px;
+}
+
+#register-student form .columns-inputs #line-page-1 {
+    height: 328px;
+}
+
+#register-student form .columns-inputs #line-page-1-1 {
+    height: 590px;
+}
+
+#register-student form .columns-inputs #line-page-2 {
+    height: 490px;
+}
+
+#register-student form .columns-inputs #line-page-2-1 {
+    height: 264px;
+}
+
+#register-student form .div-inputs {
+    display: flex;
+    flex-direction: column;
+}
+
+#register-student .div-inputs #nao-sei {
+    margin-bottom: 28px;
+    margin-top: -12px;
+}
+
+#register-student .question-checkbox {
+    margin-bottom: 10px;
+}
+
+#register-student .list-checkbox {
+    margin-bottom: 28px;
+}

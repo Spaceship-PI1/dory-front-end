@@ -10,13 +10,13 @@ export default function CardGroup({ status, list }) {
       {status == 'professores' &&
         list?.map((professor) => (
           <CardProfessor
-            key={professor.id}
-            idProfessor={professor.id}
-            srcPerfil={professor.foto}
-            nome={professor.nome}
-            email={professor.email}
-            areas={professor.areas}
-            status={professor.status}
+            key={professor?._id}
+            idProfessor={professor?._id}
+            srcPerfil={professor?.foto}
+            nome={professor?.firstName + ' ' + professor?.lastName}
+            email={professor?.email}
+            areas={professor?.researchAreas}
+            status={professor?.availability}
           />
         ))}
 

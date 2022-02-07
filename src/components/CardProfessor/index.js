@@ -31,7 +31,7 @@ export default function CardProfessor({
       </div>
 
       <ul className="tags-areas">
-        {areas.map((area, index) => (
+        {areas?.map((area, index) => (
           <li key={index} className="tag">
             {area}
           </li>

@@ -8,7 +8,7 @@ import NavBarGlobal from "../components/NavBarGlobal";
 import Input from "../components/Input";
 import RadioButton from "../components/RadioButton";
 
-import '../styles/register.css';
+import '../styles/auth.css';
 
 const schema = yup.object({
     nome: yup.string().required('O nome é obrigatório'),
@@ -17,7 +17,7 @@ const schema = yup.object({
     senha: yup.string().required('A senha é obrigatória'),
 }).required();
 
-export function Register() {
+export function Cadastro() {
     const { register, handleSubmit, formState: { errors} } = useForm({
         resolver: yupResolver(schema)
     });
@@ -28,7 +28,7 @@ export function Register() {
         <div>
             <NavBarGlobal login={false} />
 
-            <section className="container" id="register">
+            <section className="container" id="auth">
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <h1>Crie sua conta</h1>
 
@@ -41,6 +41,7 @@ export function Register() {
                             required="required"
                             placeholder="Ex: Alissa"
                             className={errors.nome? "inputText has-error" : "inputText"}
+                            size="normal"
                         />
                         <p className="error">{errors.nome?.message}</p>
 
@@ -52,6 +53,7 @@ export function Register() {
                             required="required"
                             placeholder="Ex: Fernandes"
                             className={errors.sobrenome? "inputText has-error" : "inputText"}
+                            size="normal"
                         />
                         <p className="error">{errors.sobrenome?.message}</p>
 
@@ -63,6 +65,7 @@ export function Register() {
                             required="required"
                             placeholder="Ex: alifernandes@gmail.com"
                             className={errors.email? "inputText has-error" : "inputText"}
+                            size="normal"
                         />
                         <p className="error">{errors.email?.message}</p>
 
@@ -74,6 +77,7 @@ export function Register() {
                             required="required"
                             placeholder="Não escreva 123"
                             className={errors.senha? "inputText has-error" : "inputText"}
+                            size="normal"
                         />
                         <p className="error">{errors.senha?.message}</p>
 
@@ -81,30 +85,27 @@ export function Register() {
                             <label for="perfil">Qual é seu perfil?</label>
                             <label id="required">*</label>
                         </div>
-                        <div>
+                        <div className="div-radio">
                             <RadioButton 
                                 name="aluno"
                                 question="Aluno"
                             />
                             <RadioButton 
-                                
-                                name="professor"
+                                name="prof"
                                 question="Professor"
                             />
                         </div>
                     </div>
 
                     <button className="yellow" type="submit">
-                        Criar minha conta
+                        Criar conta
                     </button>
 
-                    <Link to="/" className="sign-up">
+                    <Link to="/login" className="sign-up">
                         Já tenho conta
                     </Link>
                 </form>
             </section>
         </div>
-    )
-       
-       
+    )  
 }

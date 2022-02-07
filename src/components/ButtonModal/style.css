@@ -1,36 +1,18 @@
-label {
-    color: var(--black-purple);
-    font-size: 1.8rem;
-    font-weight: 500;
-    margin-bottom: 12px;
-}
-
-.label-required {
-    display: flex;
-}
-
-.label-required #required {
-    color: var(--red);
-    font-size: 1.6rem;
-    margin-left: 4px;
-}
-
 .buttonModal {
-    width: 445px;
-    background: var(--white);
-    color: var(--gray-1);
-    border: 1px solid var(--gray-4);
+    width: 380px;
+    background: var(--blue);
+    color: var(--white);
     border-radius: 12px;
-    padding: 18px;
-    text-align: left;
+    padding: 16px 0;
+    text-align: center;
     cursor: pointer;
-
+    font-size: 1.6rem;
+    font-weight: 500;
     margin-bottom: 28px;
 }
 
 .buttonModal:hover {
-    color: var(--blue);
-    border-color: var(--blue);
+    background: var(--blue-hover);
 }
 
 .buttonModal.has-error {

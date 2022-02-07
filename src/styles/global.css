@@ -59,6 +59,7 @@ h1 {
     margin-bottom: 16px;
 }
 
+/* resultados da pesquisa */
 .label-resultados {
     display: flex;
     align-items: center;
@@ -89,6 +90,7 @@ h1 {
     margin-bottom: 36px;
 }
 
+/* nav filtros globais */
 .resultados-container .item-resultado .nav-filtros {
     margin-top: 18px;
 }
@@ -113,4 +115,23 @@ h1 {
     margin-right: 16px;
     width: 75%;
     align-self: center;
+}
+
+/* input text */
+.label-required {
+    display: flex;
+}
+
+.label-required label {
+    color: var(--black-purple);
+    font-size: 1.8rem;
+    font-weight: 500;
+    margin-bottom: 12px;
+}
+
+.label-required #required {
+    display: block;
+    color: var(--red);
+    font-size: 1.6rem;
+    margin-left: 4px;
 }

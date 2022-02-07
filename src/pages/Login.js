@@ -8,7 +8,7 @@ import * as yup from 'yup';
 import NavBarGlobal from '../components/NavBarGlobal';
 import Input from '../components/Input';
 
-import '../styles/login.css';
+import '../styles/auth.css';
 import api from '../services/api';
 import { AuthContext } from '../contexts/AuthContext';
 import { parseCookies } from 'nookies';

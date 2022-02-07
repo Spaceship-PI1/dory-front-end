@@ -9,9 +9,6 @@ import { parseCookies } from 'nookies';
 
 export function Home() {
   const { user, isAuthenticated } = useContext(AuthContext);
-  const userData = {
-    interesses: user?.interests || ['Adicionar interesses'],
-  };
 
   const { 'dory.token': token } = parseCookies();
   useEffect(() => {
@@ -30,14 +27,15 @@ export function Home() {
       <NavBarGlobal login={true} />
 
       <section className="container" id="home">
-        <NavInteresses data={userData.interesses} />
+        {user?.interests !== null && <NavInteresses data={user?.interests} />}
 
         <SearchInput />
 
         <div className="resultados-container">
-          {userData.interesses.map((inter, index) => (
-            <Carrossel key={index} index={index} interesse={inter} />
-          ))}
+          {user?.interests !== null &&
+            user?.interests?.map((inter, index) => (
+              <Carrossel key={index} index={index} interesse={inter} />
+            ))}
         </div>
       </section>
     </div>

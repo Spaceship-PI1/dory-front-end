@@ -12,7 +12,7 @@ export default function TextArea(props) {
             <p className={props.subtitleRequired}>{props.subtitle}</p>
             <textarea
                 id={props.name}
-                rows="6"
+                rows="7"
                 cols="40"
                 placeholder= {props.placeholder}
             />
