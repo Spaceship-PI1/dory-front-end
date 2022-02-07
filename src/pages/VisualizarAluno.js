@@ -1,6 +1,7 @@
 import React from "react";
 
 import NavBarGlobal from "../components/NavBarGlobal";
+import NavPerfil from "../components/NavPerfil";
 
 import '../styles/visualizar.css';
 
@@ -9,6 +10,7 @@ export function VisualizarAluno() {
 
     const aluno = {
         id: 0,
+        perfil: "aluno",
         foto: srcPerfil,
         nome: "Alissa Fernandes",
         email: "ali.fernandes@gmail.com.br",
@@ -25,20 +27,9 @@ export function VisualizarAluno() {
     return (
         <div>
             <NavBarGlobal login={true} />
+            <NavPerfil user={aluno} />
 
-            <nav className="container nav-perfil">
-                <h2>{aluno.nome}</h2>
-                <ul>
-                    <li>Sobre</li>
-                    <li>Meu tema</li>
-                    <li>Áreas de interesse</li>
-                    <li>Modalidade escolhida</li>
-                    <li>Status do TCC</li>
-                    <li>Pretensão de defesa</li>
-                </ul>
-            </nav>
-
-            <section className="container" id="visualizar-perfil">
+            <section className="container" id="visualizar">
                 <div className="content-perfil aluno" id="div-perfil">
                     <div className="infos-perfil">
                         <div className="perfil">
@@ -52,7 +43,7 @@ export function VisualizarAluno() {
 
                         <div className="dados-perfil">
                             <h4>{aluno.nome}</h4>
-                            <p>{aluno.email}</p>
+                            <p className="email">{aluno.email}</p>
                         </div>
 
                         <button className="yellow solicitar" type="submit">

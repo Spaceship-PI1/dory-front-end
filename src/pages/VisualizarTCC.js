@@ -2,16 +2,10 @@ import React from "react";
 
 import NavBarGlobal from "../components/NavBarGlobal";
 
-import '../styles/visualizarTCC.css';
+import '../styles/visualizar.css';
 
 export function VisualizarTCC() {
     const srcCover = "https://cdn.wallpapersafari.com/19/31/fdNZ9r.jpg";
-
-    const aluno = {
-        areas: [
-            'Jogos', 'Design', 'Criação de personagens', 'Ilustração', 'Desenho'
-        ],
-    }
 
     const TCC = {
         id: 0,
@@ -32,15 +26,8 @@ export function VisualizarTCC() {
         <div>
             <NavBarGlobal login={true} />
 
-            <div className="container  interesses-container">
-                <p>Seus interesses</p>
-                <ul className="interesses-list-tags">
-                    { aluno.areas.map((inter, index) => <li key={index}>{inter}</li>)}
-                </ul>
-            </div>
-
-            <section className="container" id="visualizar-tcc">
-                <div className="content-perfil" id="infos-professor">
+            <section className="container" id="visualizar">
+                <div className="content-perfil">
                     <div className="card-info cover">
                         <img src={TCC.cover} />
                     </div>

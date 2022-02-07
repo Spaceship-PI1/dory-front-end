@@ -1,0 +1,33 @@
+nav.container.nav-perfil {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    background-color: var(--white);
+    border-bottom: 1px solid var(--gray-5);
+}
+
+nav.container.nav-perfil ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    margin-left: 12px;
+    margin-bottom: -4px;
+}
+
+nav.container.nav-perfil h2 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 2rem;
+    color: var(--blue);
+}
+
+nav.container.nav-perfil li {
+    margin-left: 16px;
+    font-size: 1.4rem;
+    cursor: pointer;
+    color: var(--gray-3);
+}
+
+nav.container.nav-perfil li:hover {
+    color: var(--blue);
+    /* font-weight: 500; */
+}

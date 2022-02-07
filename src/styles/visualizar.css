@@ -1,91 +1,69 @@
-nav.container.nav-perfil {
-    display: flex;
-    align-items: center;
-    justify-content: start;
-    background-color: var(--white);
-    border-bottom: 1px solid var(--gray-5);
-}
-
-nav.container.nav-perfil ul {
-    list-style: none;
-    display: flex;
-    align-items: center;
-    margin-left: 18px;
-}
-
-nav.container.nav-perfil h2 {
-    font-family: 'Poppins', sans-serif;
-    font-size: 2rem;
-    margin-top: 5px;
-    color: var(--blue);
-}
-
-nav.container.nav-perfil li {
-    margin-left: 16px;
-    font-size: 1.4rem;
-    color: var(--gray-3);
-}
-
-#visualizar-perfil {
+#visualizar {
     display: flex;
     flex-direction: row;
 }
 
-#visualizar-perfil .content-perfil {
+#visualizar .content-perfil {
     display: flex;
     flex-direction: column;
 
-    margin-top: 56px;
+    margin-top: 48px;
 }
 
-#visualizar-perfil #div-perfil {
+#visualizar #div-perfil {
     border: 1px solid var(--gray-5);
     border-radius: 12px;
-    height: 365px;
+    /* height: 365px; */
+    height: 300px;
 }
 
-#visualizar-perfil #div-perfil.aluno {
+#visualizar #div-perfil.aluno {
     height: 324px;
 }   
 
-#visualizar-perfil #div-perfil .infos-perfil {
+#visualizar #div-perfil .infos-perfil {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-#visualizar-perfil #div-perfil .div-status {
+#visualizar #div-perfil .infos-perfil.professor {
+    width: 255px;
+}
+
+#visualizar #div-perfil .div-status {
     background-color: var(--green);
     width: 100%;
-    padding: 12px 0;
+    padding: 10px 0;
     
     border-top-right-radius: 12px;
     border-top-left-radius: 12px;
 }
 
-#visualizar-perfil #div-perfil .label-status {
+#visualizar #div-perfil .label-status {
     color: var(--white);
     text-align: center;
     text-transform: uppercase;
     letter-spacing: 2px;
     font-size: 1.4rem;
+    font-weight: 500;
 }
 
-#visualizar-perfil .perfil {
+#visualizar .perfil {
     display: flex;
     flex-direction: column;
     width: 134px;
     margin-top: 16px;
 }
 
-#visualizar-perfil .perfil .foto-perfil {
+#visualizar .perfil .foto-perfil {
     width: 134px;
     height: 134px;
     border: 1px solid var(--gray-5);
     border-radius: 50%;
 }
 
-#visualizar-perfil .perfil .foto-perfil img {
+#visualizar .perfil .foto-perfil img {
     width: 134px;
     height: 134px;
     border-radius: 50%;
@@ -93,7 +71,7 @@ nav.container.nav-perfil li {
     object-position: center;
 }
 
-#visualizar-perfil .perfil .status  {
+#visualizar .perfil .status  {
     width: 32px;
     height: 32px;
     background-color: var(--white);
@@ -107,106 +85,108 @@ nav.container.nav-perfil li {
     margin-top: -32px;
 }
 
-#visualizar-perfil .perfil .status#disponível {
+#visualizar .perfil .status#disponível {
     border: 1px solid var(--green);
 }
 
-#visualizar-perfil .perfil .status .bolinha {
+#visualizar .perfil .status .bolinha {
     width: 24px;
     height: 24px;
     background-color: var(--white);
     border-radius: 50%;
 }
 
-#visualizar-perfil .perfil .status .bolinha#disponível {
+#visualizar .perfil .status .bolinha#disponível {
     background-color: var(--green);
 }
 
-#visualizar-perfil .dados-perfil {
+#visualizar .dados-perfil {
     margin: 18px 0;
 }
 
-#visualizar-perfil .dados-perfil h4 {
+#visualizar .dados-perfil h4 {
     color: var(--black-purple);
     font-family: 'Poppins', sans-serif;
     font-size: 20px;
     text-align: center;
 }
 
-#visualizar-perfil .dados-perfil p {
+#visualizar .dados-perfil .email {
     color: var(--gray-2);
-    margin-top: -3px;
+    margin-top: 6px;
     text-align: center;
 }
 
-#visualizar-perfil .yellow.solicitar {
+#visualizar .yellow.solicitar {
     width: 250px;
     margin: 12px;
 }
 
-#visualizar-perfil #infos-professor {
+#visualizar #infos-professor {
     margin-left: 56px;
 }
 
-#visualizar-perfil .card-info .header-info h2 {
+#visualizar .card-info {
+    margin-bottom: 38px;
+}
+
+#visualizar .card-info .header-info h2 {
     color: var(--blue);
     font-family: 'Poppins', sans-serif;
     font-weight: 600;
     font-size: 20px;
 }
 
-#visualizar-perfil .card-info .header-info hr {
+#visualizar .card-info .header-info hr {
     border: 1px solid var(--gray-5);
+    margin-top: 8px;
 }
 
-#visualizar-perfil .card-info .textParagraph {
+#visualizar .card-info .textParagraph {
     max-width: 90%;
     margin-top: 16px;
     color: var(--gray-1);
     font-size: 1.6rem;
-    margin-bottom: 42px;
+    line-height: 1.5;
 }
 
-#visualizar-perfil .interesses-list-tags {
+#visualizar .interesses-list-tags {
     list-style: none;
     display: flex;
     flex-wrap: wrap;
-    margin-top: 16px;
-    margin-bottom: 42px;
+    margin-top: 4px;
 }
 
-#visualizar-perfil .interesses-list-tags li {
+#visualizar .interesses-list-tags li {
     background: var(--blue-light);
     color: var(--black-purple);
     padding: 12px 18px;
     border-radius: 36px;
     margin-right: 12px;
-    margin-bottom: 12px;
+    margin-top: 12px;
 }
 
-#visualizar-perfil .card-TCC {
+#visualizar .card-TCC {
     margin-top: 16px;
     display: flex;
     flex-direction: row;
     list-style: none;
-    margin-bottom: 42px;
 }
 
-#visualizar-perfil .cards-pesquisa {
+#visualizar .cards-pesquisa {
     margin-top: 16px;
     list-style: none;
     display: flex;
     flex-direction: column;
-    margin-bottom: 42px;
 }
 
-#visualizar-perfil .card-pesquisa {
+#visualizar .card-pesquisa {
     display: flex;
     flex-direction: column;
     margin-bottom: 20px;
 }
 
-#visualizar-perfil .card-pesquisa p {
+#visualizar .card-pesquisa p {
     font-family: 'Poppins', sans-serif;
     font-size: 1.8rem;
     font-weight: 500;
@@ -214,34 +194,77 @@ nav.container.nav-perfil li {
     max-width: 95%;
 }
 
-#visualizar-perfil .card-pesquisa label {
+#visualizar .card-pesquisa .periodo {
     color: var(--gray-3);
     font-size: 1.6rem;
-    margin-top: -8px;
+    margin-top: 8px;
 }
 
-#visualizar-perfil .card-pesquisa:last-child {
+#visualizar .card-pesquisa:last-child {
     margin-bottom: 0;
 }
 
-#visualizar-perfil .card-pesquisa.disciplinas label {
-    margin-top: 4px;
+#visualizar .card-pesquisa.disciplinas .label-disciplinas {
     font-size: 1.8rem;
     font-weight: 400;
-}
-
-#visualizar-perfil .interesses-list-tags.disciplinas {
     margin-top: 4px;
-    margin-bottom: 0;
+    margin-bottom: 8px;
 }
 
-#visualizar-perfil .interesses-list-tags.disciplinas li {
+#visualizar .interesses-list-tags.disciplinas {
+    margin-top: 4px;
+    /* margin-bottom: 0; */
+}
+
+#visualizar .interesses-list-tags.disciplinas li {
     padding: 8px 16px;
     border-radius: 36px;
     margin-right: 12px;
     margin-bottom: 12px;
 }
 
-#visualizar-perfil #null {
+#visualizar #null {
     display: none;
+}
+
+.last{
+    margin-bottom: 80px;
+}
+
+#visualizar #title {
+    display: flex;
+    flex-direction: row;
+}
+
+#visualizar #title h1 {
+    font-size: 2.8rem;
+    max-width: 80%;
+    color: var(--blue);
+}
+
+#visualizar #title p {
+    margin-bottom: 4px;
+}
+
+#visualizar #title .creditos {
+    margin-top: 16px;
+    /* margin-bottom: 8px; */
+}
+
+#visualizar .yellow.visualizar {
+    width: 235px;
+    height: 50px;
+}
+
+#visualizar .cover {
+    height: 180px;
+    /* margin-bottom: 32px; */
+}
+
+#visualizar .cover img {
+    width: 100%;
+    height: 180px;;
+    border-radius: 12px;
+    object-fit: cover;
+    object-position: center;
 }

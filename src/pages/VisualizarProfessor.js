@@ -1,6 +1,7 @@
 import React from "react";
 
 import NavBarGlobal from "../components/NavBarGlobal";
+import NavPerfil from "../components/NavPerfil";
 import CardTCC from "../components/CardTCC";
 
 import '../styles/visualizar.css';
@@ -13,6 +14,7 @@ export function VisualizarProfessor() {
     const professor = {
         id: 0,
         foto: srcPerfil,
+        perfil: "aluno",
         nome: "Liandro Roger",
         email: "liandro@virtual.ufc.br",
         areas: [
@@ -83,22 +85,11 @@ export function VisualizarProfessor() {
         <div>
             <NavBarGlobal login={true} />
 
-            <nav className="container nav-perfil">
-                <h2>Liandro Roger</h2>
-                <ul>
-                    <li>Orientação</li>
-                    <li>Modalidade</li>
-                    <li>Áreas de pesquisa</li>
-                    <li>TCCs orientados</li>
-                    <li>Projetos de pesquisa</li>
-                    <li>Projetos de extensão</li>
-                    <li>Disciplinas</li>
-                </ul>
-            </nav>
+            <NavPerfil user={professor} />
 
-            <section className="container" id="visualizar-perfil">
+            <section className="container" id="visualizar">
                 <div className="content-perfil" id="div-perfil">
-                    <div className="infos-perfil">
+                    <div className="infos-perfil professor">
                         <div className="div-status">
                             <p className="label-status">{professor.status}</p>
                         </div>
@@ -117,12 +108,12 @@ export function VisualizarProfessor() {
 
                         <div className="dados-perfil">
                             <h4>{professor.nome}</h4>
-                            <p>{professor.email}</p>
+                            <p className="email">{professor.email}</p>
                         </div>
 
-                        <button className="yellow solicitar" type="submit">
+                        {/* <button className="yellow solicitar" type="submit">
                             Solicitar Orientação
-                        </button>
+                        </button> */}
                     </div> 
                 </div>
 
@@ -186,7 +177,7 @@ export function VisualizarProfessor() {
                             {professor.projetosPesquisa.map((projeto, index) => 
                                 <li key={index} className="card-pesquisa">
                                     <p>{projeto.nome}</p>
-                                    <label>{projeto.dataInicio} - {projeto.dataFim}</label>
+                                    <label className="periodo">{projeto.dataInicio} - {projeto.dataFim}</label>
                                 </li>
                             )}
                         </ul>
@@ -202,7 +193,7 @@ export function VisualizarProfessor() {
                             {professor.projetosExtensao.map((projeto, index) => 
                                 <li key={index} className="card-pesquisa">
                                     <p>{projeto.nome}</p>
-                                    <label>{projeto.dataInicio} - {projeto.dataFim}</label>
+                                    <label className="periodo">{projeto.dataInicio} - {projeto.dataFim}</label>
                                 </li>
                             )}
                         </ul>
@@ -214,9 +205,9 @@ export function VisualizarProfessor() {
                             <hr />
                         </div>
                         
-                        <ul className="cards-pesquisa">
+                        <ul className="cards-pesquisa last">
                             <li className="card-pesquisa disciplinas">
-                                <label>Lecionando</label>
+                                <label className="label-disciplinas">Lecionando</label>
                                 <ul className="interesses-list-tags disciplinas">
                                     {professor.disciplinas.map((disciplina, index) => 
                                         <li key={index} id={disciplina.semestre === semestreAtual ? null : "null"} >
@@ -227,7 +218,7 @@ export function VisualizarProfessor() {
                             </li>
 
                             <li className="card-pesquisa disciplinas">
-                                <label>Já lecionadas</label>
+                                <label className="label-disciplinas">Já lecionadas</label>
                                 <ul className="interesses-list-tags disciplinas">
                                     {professor.disciplinas.map((disciplina, index) => 
                                         <li key={index} id={disciplina.semestre === semestreAtual ? "null" : null} >
