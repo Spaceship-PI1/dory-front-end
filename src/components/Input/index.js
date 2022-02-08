@@ -10,6 +10,7 @@ export default function Input({
   type,
   placeholder,
   register,
+  size,
 }) {
   return (
     <div>
@@ -19,7 +20,7 @@ export default function Input({
       </div>
       <input
         {...register(name)}
-        className={className}
+        className={className + ' ' + size}
         id={name}
         type={type}
         placeholder={placeholder}

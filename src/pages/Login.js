@@ -1,17 +1,16 @@
 import React, { useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { parseCookies } from 'nookies';
 
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
+import { AuthContext } from '../contexts/AuthContext';
 import NavBarGlobal from '../components/NavBarGlobal';
 import Input from '../components/Input';
 
 import '../styles/auth.css';
-import api from '../services/api';
-import { AuthContext } from '../contexts/AuthContext';
-import { parseCookies } from 'nookies';
 
 const schema = yup
   .object({
@@ -57,7 +56,7 @@ export function Login() {
     <div>
       <NavBarGlobal login={false} />
 
-      <section className="container" id="login">
+      <section className="container" id="auth">
         <form onSubmit={handleSubmit(handleLogin)}>
           <h1>Faça Login</h1>
 
@@ -70,28 +69,21 @@ export function Login() {
               required="required"
               placeholder="Ex: alifernandes@gmail.com"
               className={errors.email ? 'inputText has-error' : 'inputText'}
+              size="normal"
             />
             <p className="error">{errors.email?.message}</p>
 
             <Input
-              name="password"
               register={register}
-              htmlFor="password"
+              name="password"
               type="password"
               question="Senha"
               required="required"
               placeholder="Não escreva 123"
-              className={errors.senha ? 'inputText has-error' : 'inputText'}
+              className={errors.password ? 'inputText has-error' : 'inputText'}
+              size="normal"
             />
-            <p className="error">{errors.senha?.message}</p>
-
-            <div className="div-forgot-password">
-              <div className="label-required">
-                {/* <label htmlFor="password">Senha</label>
-                <label id="required">*</label> */}
-              </div>
-              <label id="forgot-password">Esqueceu a senha?</label>
-            </div>
+            <p className="error">{errors.password?.message}</p>
           </div>
 
           <button className="yellow" type="submit">

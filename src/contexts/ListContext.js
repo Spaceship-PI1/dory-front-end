@@ -1,7 +1,6 @@
-import { createContext, useContext, useEffect, useState } from 'react';
+import { createContext, useEffect, useState } from 'react';
 
 import api from '../services/api';
-import { AuthContext } from './AuthContext';
 
 export const ListContext = createContext({});
 
@@ -9,10 +8,9 @@ export function ListProvider({ children }) {
   const [tccsAll, setTccsAll] = useState([]);
   const [profsAll, setProfsAll] = useState([]);
 
-  useEffect(() => {
-    getProfessoresAll();
-    getTccsAll();
-  }, []);
+  const [resultDisponibilidade, setResultDisponibilidade] = useState('');
+  const [resultPreferencia, setResultPreferencia] = useState('');
+  const [resultModalidade, setResultModalidade] = useState('');
 
   async function getProfessoresAll() {
     const response = await api.get('/teachers_all');
@@ -22,20 +20,26 @@ export function ListProvider({ children }) {
   async function getTccsAll() {
     const response = await api.get('/tcc_all');
     setTccsAll(response.data.tccs);
-    console.log(tccsAll);
   }
+  useEffect(() => {
+    getProfessoresAll();
+    getTccsAll();
+  }, []);
 
   return (
-    <ListContext.Provider value={{ tccsAll, profsAll }}>
+    <ListContext.Provider
+      value={{
+        tccsAll,
+        profsAll,
+        resultDisponibilidade,
+        setResultDisponibilidade,
+        resultPreferencia,
+        setResultPreferencia,
+        resultModalidade,
+        setResultModalidade,
+      }}
+    >
       {children}
     </ListContext.Provider>
   );
 }
-
-/*  
-  useEffect(() => {
-    getTeachers().then((response) => {
-      // console.log('List', response);
-      setTeacher(response);
-    });
-  }, []); */
