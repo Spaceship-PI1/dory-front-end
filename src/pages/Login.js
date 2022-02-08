@@ -1,4 +1,7 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
+import { AuthContext } from '../contexts/AuthContext';
+import { parseCookies } from 'nookies';
+
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup"
@@ -11,7 +14,7 @@ import '../styles/auth.css';
 
 const schema = yup.object({
     email: yup.string().required('O email é obrigatório'),
-    senha: yup.string().required('A senha é obrigatória'),
+    password: yup.string().required('A senha é obrigatória'),
 }).required();
 
 export function Login() {
@@ -19,19 +22,39 @@ export function Login() {
         resolver: yupResolver(schema)
     });
 
-    const onSubmit = data => console.log(data);
+    const { signIn, isAuthenticated } = useContext(AuthContext);
+    const { 'dory.token': token } = parseCookies();
+
+    async function handleLogin(data) {
+        console.log(isAuthenticated);
+        await signIn(data);
+    }
+
+    // executa o useEffect assim que carregar a pag
+    useEffect(() => {
+        if (token) {
+            window.location.href = '/home';
+        }
+    }, []);
+
+    // executa o useEffect sempre o tokwn mudar
+    useEffect(() => {
+        if (token) {
+            window.location.href = '/home';
+        }
+    }, [token]);
 
     return (
         <div>
             <NavBarGlobal login={false} />
 
             <section className="container" id="auth">
-                <form onSubmit={handleSubmit(onSubmit)}>
+                <form onSubmit={handleSubmit(handleLogin)}>
                     <h1>Faça Login</h1>
 
                     <div className="div-inputs">
                         <Input 
-                            {...register("email")}
+                            register={register}
                             name="email"
                             type="text"
                             question="Email"
@@ -43,16 +66,16 @@ export function Login() {
                         <p className="error">{errors.email?.message}</p>
 
                         <Input 
-                            {...register("senha")}
+                            register={register}
                             name="senha"
                             type="text"
                             question="Senha"
                             required="required"
                             placeholder="Não escreva 123"
-                            className={errors.senha? "inputText has-error" : "inputText"}
+                            className={errors.password? "inputText has-error" : "inputText"}
                             size="normal"
                         />
-                        <p className="error">{errors.senha?.message}</p>
+                        <p className="error">{errors.password?.message}</p>
                     </div>
 
                     <button className="yellow" type="submit">

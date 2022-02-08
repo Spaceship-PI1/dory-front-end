@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 import './style.css';
 
-export default function Input({ className, required, name, question, type, placeholder, size }) {
+export default function Input({ register, className, required, name, question, type, placeholder, size }) {
     return (
         <div id="input">
             {name == "senha" ? 
@@ -23,6 +23,7 @@ export default function Input({ className, required, name, question, type, place
                 </div>
             }
             <input
+                {...register(name)}
                 className={className + " " + size}
                 id={name}
                 type={type}

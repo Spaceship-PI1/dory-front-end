@@ -7,7 +7,7 @@ import './style.css';
 export default function CardGroup({ status, list }) {
     return (
         <ul className="cards">
-            {status == "professores" && list.map(professor => (
+            {status === "professores" && list.map(professor => (
                 <CardProfessor 
                     idProfessor={professor.id}
                     srcPerfil={professor.foto}
@@ -18,7 +18,7 @@ export default function CardGroup({ status, list }) {
                 />
             ))}
 
-            {status == "TCCs" && list.map(TCC => (
+            {status === "TCCs" && list.map(TCC => (
                 <CardTCC 
                     idTCC={TCC.id}
                     title={TCC.title}

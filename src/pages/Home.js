@@ -20,7 +20,7 @@ export function Home() {
                 <NavInteresses data={user.interesses}/>
 
                 <SearchInput />
-
+                
                 <div className="resultados-container">
                     {user.interesses.map((inter, index) => (
                        <Carrossel index={index} interesse={inter} />

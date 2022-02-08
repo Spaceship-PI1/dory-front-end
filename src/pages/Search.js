@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useSearchParams } from 'react-router-dom';
 
 import NavBarGlobal from "../components/NavBarGlobal";
 import NavInteresses from "../components/NavInteresses";
@@ -10,6 +11,9 @@ import CardGroup from "../components/CardGroup";
 import '../styles/search.css';
 
 export function Search() {
+    const [searchParams] = useSearchParams();
+    const pesquisa = searchParams.get('q');
+
     const [status, setStatus] = useState("professores");
 
     const handleSetProfessores = () => setStatus("professores");
@@ -20,8 +24,6 @@ export function Search() {
             'Jogos', 'Design', 'Criação de personagens', 'Ilustração', 'Desenho' 
         ]
     }
-
-    const pesquisa = "Jogos";
 
     const srcPerfil = "https://images.pexels.com/photos/7163364/pexels-photo-7163364.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500";
     

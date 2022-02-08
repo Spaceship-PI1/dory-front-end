@@ -128,3 +128,27 @@ nav.container .yellow:hover {
     background: var(--yellow-hover);
     cursor: pointer;
 }
+
+.btn-status {
+    background: var(--white);
+    border: 1px solid var(--gray-4);
+    color: var(--gray-1);
+    padding: 10px 0;
+    border-radius: 12px;
+    margin-top: 12px;
+    cursor: pointer;
+}
+
+.btn-status#disponivel {
+    border-color: var(--green);
+    color: var(--green);
+}
+
+.btn-status#indisponivel {
+    border-color: var(--red);
+    color: var(--red);
+}
+
+.btn-status.pressed#disponivel {
+    background: var(--green);
+}

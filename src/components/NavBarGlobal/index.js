@@ -7,8 +7,18 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import Avatar from '@mui/material/Avatar';
 
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
+import Divider from '@mui/material/Divider';
+import CloseIcon from '@mui/icons-material/Close';
+
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+
+// import Button from "../Button";
 
 import logo from '../../assets/logo-negativa.svg';
 // import envelope from '../../assets/icons/envelope.svg';
@@ -22,7 +32,7 @@ export default function NavBarGlobal({ login }) {
         id: 0,
         foto: srcPerfil,
         nome: "Alissa",
-        perfil: "aluno",
+        perfil: "professor",
         // solicitacoesPendentes: 0 
     }
 
@@ -31,6 +41,14 @@ export default function NavBarGlobal({ login }) {
 
     const handleClick = (e) => setMenu(e.currentTarget);
     const handleClose = () => setMenu(null);
+
+    const [openModal, setOpenModal] = useState(false);
+    const [disponibilidade, setDisponibilidade] = useState("");
+
+    const handleClickModal = () => setOpenModal(true);
+    const handleCloseModal = () => setOpenModal(false);
+
+    const handleDisponivel = () => setDisponibilidade("disponivel");
 
     return (
         <nav className="container" >
@@ -120,7 +138,7 @@ export default function NavBarGlobal({ login }) {
                                 <MenuItem onClick={() => {}} sx={{fontSize: '1.4rem'}}>Ver Perfil</MenuItem>
                                 <MenuItem onClick={() => {}} sx={{fontSize: '1.4rem'}}>Ver "Meus TCCs"</MenuItem>
                                 {/* <MenuItem onClick={() => {}} sx={{fontSize: '1.4rem'}}>Ver Solicitações</MenuItem> */}
-                                <MenuItem onClick={() => {}} sx={{fontSize: '1.4rem'}}>Atualizar Disponibilidade</MenuItem>
+                                <MenuItem onClick={handleClickModal} sx={{fontSize: '1.4rem'}}>Atualizar Disponibilidade</MenuItem>
                                 <MenuItem onClick={() => {}} sx={{fontSize: '1.4rem'}}>Sair</MenuItem>
                             </>
                         :
@@ -128,10 +146,100 @@ export default function NavBarGlobal({ login }) {
                                 <MenuItem onClick={() => {}} sx={{fontSize: '1.4rem'}}>Ver Perfil</MenuItem>
                                 {/* <MenuItem onClick={() => {}} sx={{fontSize: '1.4rem'}}>Ver Solicitações</MenuItem> */}
                                 <MenuItem onClick={() => {}} sx={{fontSize: '1.4rem'}}>Sair</MenuItem>
+                                
                             </> 
                         }
                         </Menu>
                     </Box>
+
+                    <Dialog open={openModal} onClose={handleCloseModal}>
+                        <Box sx={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'space-between'
+                        }}>
+                            <DialogTitle 
+                                sx={{
+                                    fontFamily: 'Poppins',
+                                    fontSize: '1.8rem',
+                                    fontWeight: 600,
+                                    color: '#6283FA'
+                                }}
+                            >
+                                Atualizar a Disponibilidade para Orientação
+                            </DialogTitle>
+                        
+                            <button 
+                                style={{
+                                    background: 'white',
+                                    cursor: 'pointer'
+                                }}
+                                onClick={handleCloseModal}
+                            >
+                                <CloseIcon sx={{
+                                    marginRight: 2,
+                                    fontSize: 28,
+                                    color: '#979797',
+                                    '&:hover': {
+                                        color: '#6283FA'
+                                    }
+                                }}/>
+                            </button>
+                        </Box>
+                        <Divider />
+                        <DialogContent sx={{
+                                fontSize: '1.4rem'
+                            }}
+                        >
+                            <DialogContentText sx={{
+                                fontSize: '1.6rem',
+                                fontWeight: 500,
+                                color: '#3D345E',
+                                marginBottom: '8px'
+                            }}>
+                                Qual a sua disponibilidade para orientar nesse semestre?
+                            </DialogContentText>
+                            <Box sx={{
+                                display: 'flex',
+                                flexDirection: 'column',
+                                justifyContent: 'flex-start'
+                            }}>
+                                <button className="btn-status" id="disponivel">
+                                    Disponível
+                                </button>
+                                <button className="btn-status" id="indisponivel">
+                                    Indisponível
+                                </button>
+                                <button className="btn-status" id="analise">
+                                    Disponibilidade em análise
+                                </button>
+                            </Box>
+                        </DialogContent> 
+                        <Divider />
+                        <DialogActions
+                            sx={{
+                                display: 'flex',
+                                alignItems: 'center',
+                                marginLeft: 2,
+                                marginRight: 2
+                            }}
+                        >
+                            oi
+                            {/* <Button 
+                                className="defaultModal"
+                                idButton="cancelar"
+                                placeholder="Cancelar"
+                                onClick={handleCloseModal}
+                            />
+
+                            <Button 
+                                className="secondaryModal"
+                                idButton="salvar"
+                                placeholder="Salvar"
+                                onClick={() => {}}
+                            /> */}
+                        </DialogActions>
+                    </Dialog>
                 </div>
             </>
             :

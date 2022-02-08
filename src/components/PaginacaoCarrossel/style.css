@@ -1,13 +1,3 @@
-.resultados-container .item-resultado h1 {
-    color: var(--black-purple);
-    font-size: 2.6rem;
-    text-transform: capitalize;
-}
-
-.resultados-container .item-resultado .nav-filtros.carrossel {
-    margin-bottom: 12px;
-}
-
 .buttons-carrossel {
     display: flex;
     align-items: center;
@@ -31,5 +21,4 @@
 
 .buttons-carrossel .btn-carrossel#selected {
     background: var(--blue);
-    border: 0;
 }

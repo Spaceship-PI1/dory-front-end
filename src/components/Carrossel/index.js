@@ -6,9 +6,14 @@ import './style.css';
 
 export default function Carrossel({ index, interesse }) {
     const [status, setStatus] = useState("professores");
+    const [pass, setPass] = useState("1");
 
     const handleSetProfessores = () => setStatus("professores");
     const handleSetTCCs = () => setStatus("TCCs");
+
+    const handlePass1 = () => setPass("1");
+    const handlePass2 = () => setPass("2");
+    const handlePass3 = () => setPass("3");
 
     const srcPerfil = "https://images.pexels.com/photos/7163364/pexels-photo-7163364.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500";
 
@@ -42,8 +47,65 @@ export default function Carrossel({ index, interesse }) {
                 'Realidade Virtual', 'Game design', 'Desenvolvimento de jogos', 'Jogos'
             ],
             status: "Análise" 
+        },
+        {
+            id: 2,
+            foto: srcPerfil,
+            nome: "Alysson Diniz",
+            email: "alysson@virtual.ufc.br",
+            areas: [
+                'Realidade Virtual', 'Game design', 'Desenvolvimento de jogos', 'Jogos'
+            ],
+            status: "Análise" 
         }
     ]
+
+    // const listProfessores = [
+    //     [
+    //         {
+    //             id: 0,
+    //             foto: srcPerfil,
+    //             nome: "Alysson Diniz",
+    //             email: "alysson@virtual.ufc.br",
+    //             areas: [
+    //                 'Realidade Virtual', 'Game design', 'Desenvolvimento de jogos', 'Jogos'
+    //             ],
+    //             status: "Disponível" 
+    //         },
+    //         {
+    //             id: 1,
+    //             foto: "",
+    //             nome: "Alysson Diniz",
+    //             email: "alysson@virtual.ufc.br",
+    //             areas: [
+    //                 'Realidade Virtual', 'Game design', 'Desenvolvimento de jogos', 'Jogos'
+    //             ],
+    //             status: "indisponível" 
+    //         },
+    //         {
+    //             id: 2,
+    //             foto: srcPerfil,
+    //             nome: "Alysson Diniz",
+    //             email: "alysson@virtual.ufc.br",
+    //             areas: [
+    //                 'Realidade Virtual', 'Game design', 'Desenvolvimento de jogos', 'Jogos'
+    //             ],
+    //             status: "Análise" 
+    //         },
+    //     ], 
+    //     [
+    //         {
+    //             id: 2,
+    //             foto: srcPerfil,
+    //             nome: "Alysson Diniz",
+    //             email: "alysson@virtual.ufc.br",
+    //             areas: [
+    //                 'Realidade Virtual', 'Game design', 'Desenvolvimento de jogos', 'Jogos'
+    //             ],
+    //             status: "Análise" 
+    //         }
+    //     ]
+    // ]
 
     const listTCCs = [
         {
@@ -66,6 +128,8 @@ export default function Carrossel({ index, interesse }) {
         },
     ]
 
+    console.log(listProfessores.length);
+
     return (
         <div key={index} className="item-resultado">
             <h1>{interesse}</h1>
@@ -81,9 +145,27 @@ export default function Carrossel({ index, interesse }) {
             </div>
 
             <CardGroup 
-            status={status}
-            list={status == "TCCs" ? listTCCs : listProfessores}
-        />
+                status={status}
+                list={status === "TCCs" ? listTCCs : listProfessores}
+            />
+
+            <div className="buttons-carrossel">
+                <button 
+                    className="btn-carrossel" 
+                    onClick={handlePass1} 
+                    id={pass === "1" ? "selected" : null}
+                ></button>
+                <button 
+                    className="btn-carrossel" 
+                    onClick={handlePass2}
+                    id={pass === "2" ? "selected" : null}
+                ></button>
+                <button 
+                    className="btn-carrossel" 
+                    onClick={handlePass3}
+                    id={pass === "3" ? "selected" : null}
+                ></button>
+            </div>
         </div>
     )
 }
