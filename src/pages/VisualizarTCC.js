@@ -1,26 +1,25 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useParams } from 'react-router-dom';
 
 import NavBarGlobal from "../components/NavBarGlobal";
 
+import api from '../services/api';
+
+import cover from '../assets/cover-default.png';
 import '../styles/visualizar.css';
 
 export function VisualizarTCC() {
-    const srcCover = "https://cdn.wallpapersafari.com/19/31/fdNZ9r.jpg";
+    const { idTCC } = useParams();
+    const [TCC, setTCC] = useState([]);
 
-    const TCC = {
-        id: 0,
-        cover: srcCover,
-        tema: "Ressignificando personagens do Folclore Brasileiro no Universo Visual de Pokémon",
-        orientando: "Felipe Sampaio do Nascimento Melquiades",
-        orientador: "Professor Natal Anacleto Chicca Junior",
-        palavrasChaves: [
-            'Criação de personagens', 'Folclore Brasileiro', 'Pokémon'
-        ],
-        abstract: "O Brasil é rico em diversidade de seres folclóricos que variam sua história e aparência por todas as suas regiões, possibilitando um aglomerado de refências sobre cada personagem. Atualmente, o folclore vive nas mídias contribuindo com inspirações para novas narrativas audivisuais, e não obstante, a franquia japonesa e midiática Pokémon é adepta de diversos personagens que resgatam referências em seres mitológicos de várias culturas.",
-        modalidade: "Relatório Técnico",
-        semestre: "2021.1",
-        linkPDF: "https://drive.google.com/drive/folders/1XcWyolLBmvrHwIDaN9Z6GSiegPJq3quE",
+    async function getTCCId() {
+        const response = await api.get(`/tcc_id?id=${idTCC}`);
+        setTCC(response.data.tcc);
     }
+    
+    useEffect(() => {
+        getTCCId(); 
+    }, []);
 
     return (
         <div>
@@ -29,24 +28,39 @@ export function VisualizarTCC() {
             <section className="container" id="visualizar">
                 <div className="content-perfil">
                     <div className="card-info cover">
-                        <img src={TCC.cover} />
+                        {TCC[0]?.cover ?
+                            <img src={TCC[0]?.cover} />
+                        :
+                            <img src={cover} />
+                        }
                     </div>
+                    
 
                     <div className="card-info" id="title">
                         <div className="header-info">
-                            <h1>{TCC.tema}</h1>
+                            <h1>{TCC[0]?.title}</h1>
                             <div className="creditos">
                                 <p>
-                                    <strong>Autor: </strong> {TCC.orientando}
+                                    <strong>Autor: </strong> {TCC[0]?.student}
                                 </p>
                                 <p>
-                                    <strong>Orientador: </strong> {TCC.orientador}
+                                    <strong>Orientador: </strong> {TCC[0]?.teacher}
                                 </p>
                             </div>
                         </div>
-                        <button className="yellow visualizar" type="submit">
-                            Visualizar PDF
-                        </button>
+
+                        {TCC[0]?.linkPDF ?
+                            <a  
+                                href={TCC[0]?.linkPDF} 
+                                className="yellow visualizar"
+                                target="_blank"
+                            >
+                                Visualizar PDF
+                            </a> 
+                        :
+                            null
+                        }
+                        
                     </div>
                    
                     <div className="card-info">
@@ -54,7 +68,12 @@ export function VisualizarTCC() {
                             <h2>Abstract</h2>
                             <hr />
                         </div>
-                        <p className="textParagraph">{TCC.abstract}</p>
+                        {TCC[0]?.abstract ?
+                            <p className="textParagraph">{TCC[0]?.abstract}</p>
+                        :
+                        <p className="textParagraph alert">Não possui abstract cadastrado!</p>
+                        }
+                        
                     </div>
 
                     <div className="card-info">
@@ -64,7 +83,12 @@ export function VisualizarTCC() {
                         </div>
 
                         <ul className="interesses-list-tags">
-                            { TCC.palavrasChaves.map((area, index) => <li key={index}>{area}</li>)}
+                            {TCC[0]?.areas ? 
+                                TCC[0]?.areas.map((area, index) => <li key={index}>{area}</li>)
+                            :
+                                <p className="textParagraph alert">Não possui as palavras-chaves cadastradas!</p>
+                            }
+                            
                         </ul>
                     </div>
 
@@ -75,8 +99,14 @@ export function VisualizarTCC() {
                         </div>
 
                         <ul className="interesses-list-tags">
-                            <li key={TCC.modalidade}>{TCC.modalidade}</li>
-                            <li key={TCC.semestre}>{TCC.semestre}</li>
+                            {TCC[0]?.modalidade || TCC[0]?.semestre ? 
+                                <>
+                                    <li key={TCC[0]?.modalidade}>{TCC[0]?.modalidade}</li>
+                                    <li key={TCC[0]?.semestre}>{TCC[0]?.semestre}</li>
+                                </>
+                            :
+                                <p className="textParagraph alert">Não possui mais informações cadastradas!</p>
+                            }
                         </ul>
                     </div>
                 </div>

@@ -40,8 +40,8 @@ export default function CardGroup({ status, list }) {
                     isActiveCard ?
                         list.map(TCC => (
                             <CardTCC 
-                                key={TCC?.id}
-                                idTCC={TCC?.id}
+                                key={TCC?._id}
+                                idTCC={TCC?._id}
                                 title={TCC?.title}
                                 aluno={TCC?.student}
                                 professor={TCC?.teacher}

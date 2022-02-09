@@ -1,14 +1,25 @@
 import React from "react";
+import { useNavigate } from 'react-router-dom';
 
 import './style.css';
 
 export default function CardTCC({ idTCC, title, aluno, professor , areas }) {
+    const navigate = useNavigate();
+
+    const handleView = (e) => {
+        navigate({
+            pathname: `/tcc/${idTCC}`,
+        });
+
+        e.preventDefault();
+    }
+
     return (
         <li key={idTCC} className="card" id="TCC">
             <h2>{title}</h2>
 
             <ul className="tags-areas">
-                {areas.map((area, index) => <li key={index} className="tag">{area}</li>)}
+                {areas.map((area, index) => index < 4 && <li key={index} className="tag">{area}</li>)}
             </ul>
 
             <div className="infos">
@@ -20,7 +31,7 @@ export default function CardTCC({ idTCC, title, aluno, professor , areas }) {
                 </p>
             </div>
            
-            <button className="yellow" type="submit">
+            <button className="yellow" onClick={handleView} >
                 Ver TCC
             </button>
         </li>

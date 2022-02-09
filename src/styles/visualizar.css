@@ -154,6 +154,10 @@
     line-height: 1.5;
 }
 
+#visualizar .card-info .textParagraph.alert {
+    color: var(--red);
+}
+
 #visualizar .interesses-list-tags {
     list-style: none;
     display: flex;
@@ -258,6 +262,7 @@
 #visualizar .yellow.visualizar {
     width: 235px;
     height: 50px;
+    text-align: center;
 }
 
 #visualizar .cover {

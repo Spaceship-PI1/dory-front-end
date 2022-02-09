@@ -31,7 +31,7 @@ function RoutesApp() {
             <Route path="/pesquisa" element={<Search />} />
             <Route path="/visualizar/:idProfessor" element={<VisualizarProfessor />} />
             <Route path="/visualizar/aluno" element={<VisualizarAluno />} />
-            <Route path="/visualizar/TCC" element={<VisualizarTCC />} />
+            <Route path="/tcc/:idTCC" element={<VisualizarTCC />} />
 
             <Route path="/professores" element={<ShortcutNavBar status="professores" />} />
             <Route path="/TCCs" element={<ShortcutNavBar status="TCCs" />} />
