@@ -19,10 +19,15 @@
     display: flex;
 }
 
-.interesses-container .interesses-list-tags li {
+.interesses-container .interesses-list-tags button {
     background: var(--blue-light);
     color: var(--black-purple);
     padding: 12px 18px;
     border-radius: 36px;
     margin-right: 12px;
+    cursor: pointer;
+}
+
+.interesses-container .interesses-list-tags button:hover {
+    background-color: var(--blue-light-hover);
 }
