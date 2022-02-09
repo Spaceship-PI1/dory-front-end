@@ -1,47 +1,43 @@
-import React, { useContext, useEffect }  from "react";
+import React, { useEffect, useState } from "react";
+import { useParams } from 'react-router-dom';
 
 import NavBarGlobal from "../components/NavBarGlobal";
 import NavPerfil from "../components/NavPerfil";
 
-import { AuthContext } from '../contexts/AuthContext';
-import { parseCookies } from 'nookies';
+import api from '../services/api';
 
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 import '../styles/visualizar.css';
 
 export function VisualizarAluno() {
-    const { user, isAuthenticated } = useContext(AuthContext);
-
-    const { 'dory.token': token } = parseCookies();
-
+    const { idAluno } = useParams();
+    const [aluno, setAluno] = useState([]);
+    
+    async function getAlunoId() {
+        const response = await api.get(`/student_id?id=${idAluno}`);
+        setAluno(response.data.teacher);
+    }
+    
     useEffect(() => {
-        if (!token) {
-            window.location.href = '/';
-        }
+        getAlunoId(); 
     }, []);
-
-    useEffect(() => {
-        if (!token) {
-            window.location.href = '/';
-        }
-    }, [token, isAuthenticated]);
 
     return (
         <div>
             <NavBarGlobal login={true} />
-            <NavPerfil user={user} />
+            <NavPerfil user={aluno[0]} />
 
             <section className="container" id="visualizar">
                 <div className="content-perfil aluno" id="div-perfil">
                     <div className="infos-perfil">
                         <div className="perfil">
-                            {user?.photo ?
+                            {aluno[0]?.photo ?
                                 <div className="foto-perfil">
                                     <img 
                                         className="foto" 
-                                        src={user?.photo}
-                                        alt={user?.firstName} />
+                                        src={aluno[0]?.photo}
+                                        alt={aluno[0]?.firstName} />
                                 </div>
                             :
                                 <AccountCircleIcon sx={{ fontSize: 134, color: '#506DD8' }} /> 
@@ -49,8 +45,8 @@ export function VisualizarAluno() {
                         </div>
 
                         <div className="dados-perfil">
-                            <h4>{user?.firstName + " " + user?.lastName}</h4>
-                            <p className="email">{user?.email}</p>
+                            <h4>{aluno[0]?.firstName + " " + aluno[0]?.lastName}</h4>
+                            <p className="email">{aluno[0]?.email}</p>
                         </div>
 
                         {/* <button className="yellow solicitar" type="submit">
@@ -65,8 +61,8 @@ export function VisualizarAluno() {
                             <h2>Sobre</h2>
                             <hr />
                         </div>
-                        {user?.about ? 
-                            <p className="textParagraph">{user?.about}</p>
+                        {aluno[0]?.about ? 
+                            <p className="textParagraph">{aluno[0]?.about}</p>
                         :
                             <p className="textParagraph alert">Não possui descrição cadastrada!</p>
                         }
@@ -78,8 +74,8 @@ export function VisualizarAluno() {
                             <h2>Meu tema</h2>
                             <hr />
                         </div>
-                        {user?.tema ? 
-                            <p className="textParagraph">{user?.tema}</p>
+                        {aluno[0]?.tema ? 
+                            <p className="textParagraph">{aluno[0]?.tema}</p>
                         :
                             <p className="textParagraph alert">Não possui tema cadastrado!</p>
                         }
@@ -92,8 +88,8 @@ export function VisualizarAluno() {
                         </div>
 
                         <ul className="interesses-list-tags">
-                            {user?.interests ? 
-                                user?.interests?.map((area, index) => <li key={index}>{area}</li>)
+                            {aluno[0]?.interests ? 
+                                aluno[0]?.interests?.map((area, index) => <li key={index}>{area}</li>)
                             : 
                                 <p className="textParagraph alert">Não possui interesses cadastrados!</p>
                             }
@@ -105,8 +101,8 @@ export function VisualizarAluno() {
                             <h2>Modalidade escolhida</h2>
                             <hr />
                         </div>
-                        {user?.modalidade ? 
-                            <p className="textParagraph">{user?.modalidade}</p>
+                        {aluno[0]?.modalidade ? 
+                            <p className="textParagraph">{aluno[0]?.modalidade}</p>
                         : 
                             <p className="textParagraph alert">Não possui a modalidade cadastrada!</p>
                         }
@@ -117,8 +113,8 @@ export function VisualizarAluno() {
                             <h2>Status do desenvolvimento do TCC</h2>
                             <hr />
                         </div>
-                        {user?.statusTCC ? 
-                            <p className="textParagraph">{user?.statusTCC}</p>
+                        {aluno[0]?.statusTCC ? 
+                            <p className="textParagraph">{aluno[0]?.statusTCC}</p>
                         : 
                             <p className="textParagraph alert">Não possui o status cadastrado!</p>
                         }
@@ -129,8 +125,8 @@ export function VisualizarAluno() {
                             <h2>Pretensão de defesa</h2>
                             <hr />
                         </div>
-                        {user?.pretensaoDefesa ? 
-                            <p className="textParagraph">{user?.pretensaoDefesa}</p>
+                        {aluno[0]?.pretensaoDefesa ? 
+                            <p className="textParagraph">{aluno[0]?.pretensaoDefesa}</p>
                         : 
                             <p className="textParagraph alert">Não possui a pretensão de defesa cadastrada!</p>
                         }

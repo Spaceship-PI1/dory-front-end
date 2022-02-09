@@ -10,6 +10,7 @@ import { Search } from "./pages/Search";
 import { VisualizarProfessor } from "./pages/VisualizarProfessor";
 import { VisualizarAluno } from "./pages/VisualizarAluno";
 import { VisualizarTCC } from "./pages/VisualizarTCC";
+import { VisualizarMeuPerfil } from "./pages/VisualizarMeuPerfil";
 import { ShortcutNavBar } from "./pages/ShortcutNavBar";
 import { Home } from "./pages/Home";
 
@@ -30,8 +31,9 @@ function RoutesApp() {
             <Route path="/home" element={<Home />} />
             <Route path="/pesquisa" element={<Search />} />
             <Route path="/professor/:idProfessor" element={<VisualizarProfessor />} />
-            <Route path="/visualizar" element={<VisualizarAluno />} />
+            <Route path="/aluno/:idAluno" element={<VisualizarAluno />} />
             <Route path="/tcc/:idTCC" element={<VisualizarTCC />} />
+            <Route path="/profile" element={<VisualizarMeuPerfil />} />
 
             <Route path="/professores" element={<ShortcutNavBar status="professores" />} />
             <Route path="/TCCs" element={<ShortcutNavBar status="TCCs" />} />

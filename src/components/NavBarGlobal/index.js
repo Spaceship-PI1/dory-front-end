@@ -46,7 +46,7 @@ export default function NavBarGlobal({ login }) {
 
     const handleViewMyPerfil = (e) => {
         navigate({
-            pathname: `/visualizar`,
+            pathname: `/profile`,
         });
 
         e.preventDefault();
