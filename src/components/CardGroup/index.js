@@ -1,10 +1,19 @@
-import React from "react";
+import React,  { useContext } from "react";
 import CardProfessor from "../CardProfessor";
 import CardTCC from "../CardTCC";
+
+import { ListContext } from '../../contexts/ListContext';
 
 import './style.css';
 
 export default function CardGroup({ status, list }) {
+    const {
+        resultDisponibilidade,
+        resultPreferencia,
+        resultSemestre,
+        resultModalidade,
+    } = useContext(ListContext);
+
     let isActiveCard = true;
 
     list.length > 0 ? isActiveCard = true : isActiveCard = false;

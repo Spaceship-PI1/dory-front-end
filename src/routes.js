@@ -14,26 +14,29 @@ import { ShortcutNavBar } from "./pages/ShortcutNavBar";
 import { Home } from "./pages/Home";
 
 import { AuthProvider } from './contexts/AuthContext';
+import { ListProvider } from './contexts/ListContext';
 
 function RoutesApp() {
   return (
     <Router>
       <AuthProvider>
-        <Routes>
-          <Route path="/" exact element={<Login />} />
-          <Route path="/cadastro" element={<Cadastro />} />
-          <Route path="/cadastro/aluno" element={<CadastroAluno />} />
-          <Route path="/cadastro/professor" element={<CadastroProfessor />} />
+        <ListProvider>
+          <Routes>
+            <Route path="/" exact element={<Login />} />
+            <Route path="/cadastro" element={<Cadastro />} />
+            <Route path="/cadastro/aluno" element={<CadastroAluno />} />
+            <Route path="/cadastro/professor" element={<CadastroProfessor />} />
 
-          <Route path="/home" element={<Home />} />
-          <Route path="/pesquisa" element={<Search />} />
-          <Route path="/visualizar/professor" element={<VisualizarProfessor />} />
-          <Route path="/visualizar/aluno" element={<VisualizarAluno />} />
-          <Route path="/visualizar/TCC" element={<VisualizarTCC />} />
+            <Route path="/home" element={<Home />} />
+            <Route path="/pesquisa" element={<Search />} />
+            <Route path="/visualizar/:idProfessor" element={<VisualizarProfessor />} />
+            <Route path="/visualizar/aluno" element={<VisualizarAluno />} />
+            <Route path="/visualizar/TCC" element={<VisualizarTCC />} />
 
-          <Route path="/professores" element={<ShortcutNavBar status="professores" />} />
-          <Route path="/TCCs" element={<ShortcutNavBar status="TCCs" />} />
-        </Routes>
+            <Route path="/professores" element={<ShortcutNavBar status="professores" />} />
+            <Route path="/TCCs" element={<ShortcutNavBar status="TCCs" />} />
+          </Routes>
+        </ListProvider>
       </AuthProvider>
     </Router>
   );

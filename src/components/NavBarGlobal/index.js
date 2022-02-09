@@ -90,10 +90,10 @@ export default function NavBarGlobal({ login }) {
                             marginLeft: '20px'
                         }}
                     >   
-                        {user.photo ? 
+                        {user?.photo ? 
                             <Avatar 
-                                alt={user.firstName}
-                                src={user.photo} 
+                                alt={user?.firstName}
+                                src={user?.photo} 
                                 sx={{ width: 34, height: 34, marginTop: 1, marginBottom: -0.3 }}
                             />
                         :
@@ -114,7 +114,7 @@ export default function NavBarGlobal({ login }) {
                                 fontWeight: 500
                             }}
                         >
-                            {user.firstName}
+                            {user?.firstName}
                         </Button>
 
                         <Menu
@@ -126,7 +126,7 @@ export default function NavBarGlobal({ login }) {
                             'aria-labelledby': 'basic-button',
                             }}
                         >
-                        {user.role === "teacher" ?
+                        {user?.role === "teacher" ?
                             <>
                                 <MenuItem onClick={() => {}} sx={{fontSize: '1.4rem'}}>Ver Perfil</MenuItem>
                                 <MenuItem onClick={() => {}} sx={{fontSize: '1.4rem'}}>Ver "Meus TCCs"</MenuItem>

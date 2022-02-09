@@ -1,12 +1,20 @@
 import React from "react";
+import { useNavigate } from 'react-router-dom';
 
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 import './style.css';
 
 export default function CardProfessor({ idProfessor, srcPerfil, nome, email, areas, status }) {
-    const altPerfil = "Foto de perfil de " + nome;
-    const statusClass = status.toLowerCase();
+    const navigate = useNavigate();
+
+    const handleView = (e) => {
+        navigate({
+            pathname: `/visualizar/${idProfessor}`,
+        });
+
+        e.preventDefault();
+    }
 
     return (
         <li key={idProfessor} className="card" id="professor">
@@ -17,13 +25,13 @@ export default function CardProfessor({ idProfessor, srcPerfil, nome, email, are
                             <img 
                                 className="foto" 
                                 src={srcPerfil} 
-                                alt={altPerfil} />
+                                alt={"Foto de perfil de " + nome} />
                         </div> 
                         :
                         <AccountCircleIcon sx={{ fontSize: 66, color: '#506DD8' }} /> 
                     }
-                    <div className="status" id={statusClass} >
-                        <div className="bolinha" id={statusClass} ></div>
+                    <div className="status" id={status.toLowerCase()} >
+                        <div className="bolinha" id={status.toLowerCase()} ></div>
                     </div>
                 </div>
 
@@ -34,10 +42,10 @@ export default function CardProfessor({ idProfessor, srcPerfil, nome, email, are
             </div>
             
             <ul className="tags-areas">
-                {areas?.map((area, index) => <li key={index} className="tag">{area}</li>)}
+                {areas?.map((area, index) => index < 4 && <li key={index} className="tag">{area}</li>)}
             </ul>
 
-            <button className="yellow" type="submit">
+            <button className="yellow" onClick={handleView}>
                 Ver Perfil
             </button>
         </li>

@@ -1,114 +1,71 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useParams } from 'react-router-dom';
 
 import NavBarGlobal from "../components/NavBarGlobal";
 import NavPerfil from "../components/NavPerfil";
 import CardTCC from "../components/CardTCC";
 
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+
+import api from '../services/api';
+ 
 import '../styles/visualizar.css';
 
 export function VisualizarProfessor() {
+    const { idProfessor } = useParams();
+    const [prof, setProf] = useState([]);
+    
     const semestreAtual = "2021.2";
 
-    const srcPerfil = "https://images.pexels.com/photos/7163364/pexels-photo-7163364.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500";
-
-    const professor = {
-        id: 0,
-        foto: srcPerfil,
-        perfil: "aluno",
-        nome: "Liandro Roger",
-        email: "liandro@virtual.ufc.br",
-        areas: [
-            'Jogos', 'Design', 'Criação de personagens', 'Ilustração', 'Desenho', 'Visual Development', 'Animação', 'Cartum '
-        ],
-        status: "disponível",
-        sobreOrientacao: " Oi, me chamo Liandro! Sobre minha orientação, prefiro orientar alunos que o tema esteja alinhado as minhas áreas de pesquisa, para que a orientação ocorra com qualidade. Durante o período de orientação, eu marco encontro semanais em horários pré-agendados, e tento nesses encontros ajudar ao máximo o aluno e lhe passar materiais que possam contribuir com o seu tcc. Caso você tenha interesse na minha orientação, fique tranquilo, podemos marcar um papo :)",
-        modalidades: [ 'Relatório Técnico', 'Artigo Científico' ],
-        projetosPesquisa: [
-            {
-                nome: "Quadrinhos e Hipermídia: transformações, convergências e possibilidades da Arte Sequencial no meio digital",
-                dataInicio: "2017",
-                dataFim: "2017"
-            },
-            {
-                nome: "À tela infinita... e além: um estudo sobre o uso de recursos da Hipermídia na criação de Histórias em Quadrinhos digitais",
-                dataInicio: "2015",
-                dataFim: "2016"
-            }
-        ],
-        projetosExtensao: [
-            {
-                nome: "Comunidade aberta de estudos e atividades em desenho, ilustração, concept art e representação gráfica",
-                dataInicio: "2017",
-                dataFim: "2018"
-            }
-        ],
-        disciplinas: [
-            {
-                nome: "Desenho I",
-                semestre: "2021.2" 
-            },
-            {
-                nome: "Desenho II",
-                semestre: "2021.2" 
-            },
-            {
-                nome: "Concepção de cenários e de personagens",
-                semestre: "2021.2" 
-            },
-            {
-                nome: "História do Design",
-                semestre: "2021.2" 
-            },
-            {
-                nome: "Técnicas de animação analógica",
-                semestre: "2020.1" 
-            },
-            {
-                nome: "Projeto Integrado II",
-                semestre: "2020.1" 
-            }
-        ],
-        TCCs: [
-            {
-                id: 0,
-                title: "Desenvolvimento de uma personagem para um projeto de jogo digital de terror utilizando a abordagem The Silver Way",
-                aluno: "Douglas Alves da Silva",
-                professor: "Liandro Roger", 
-                areas: [
-                    'Design de personagens', 'Cartum', 'Jogos de Terror'
-                ]
-            }
-        ]
+    async function getProfessorId() {
+        const response = await api.get(`/teacher_id?id=${idProfessor}`);
+        setProf(response.data.teacher);
     }
+    
+    useEffect(() => {
+        getProfessorId(); 
+    }, []);
 
     return (
         <div>
             <NavBarGlobal login={true} />
 
-            <NavPerfil user={professor} />
+            <NavPerfil user={prof[0]} />
 
             <section className="container" id="visualizar">
                 <div className="content-perfil" id="div-perfil">
                     <div className="infos-perfil professor">
                         <div className="div-status">
-                            <p className="label-status">{professor.status}</p>
+                            <p className="label-status">{prof[0]?.availability}</p>
                         </div>
 
                         <div className="perfil">
-                            <div className="foto-perfil">
-                                <img 
-                                    className="foto" 
-                                    src={professor.foto}
-                                    alt={professor.nome} />
-                            </div>
-                            <div className="status" id={professor.status} >
-                                <div className="bolinha" id={professor.status} ></div>
-                            </div>
+                            {prof[0]?.photo ? 
+                                <>
+                                    <div className="foto-perfil">
+                                        <img 
+                                            className="foto" 
+                                            src={prof[0]?.photo} 
+                                            alt={prof[0]?.firstName} />
+                                    </div> 
+                                    <div className="status" id={prof[0]?.availability.toLowerCase()} >
+                                        <div className="bolinha" id={prof[0]?.availability.toLowerCase()} ></div>
+                                    </div>
+                                </>
+                                :
+                                <>
+                                    <AccountCircleIcon sx={{ fontSize: 134, color: '#506DD8' }} /> 
+
+                                    <div className="status no-photo" id={prof[0]?.availability.toLowerCase()} >
+                                        <div className="bolinha" id={prof[0]?.availability.toLowerCase()} ></div>
+                                    </div>
+                                </>
+                            }
                         </div>
 
                         <div className="dados-perfil">
-                            <h4>{professor.nome}</h4>
-                            <p className="email">{professor.email}</p>
+                            <h4>{prof[0]?.firstName + " " + prof[0]?.lastName}</h4>
+                            <p className="email">{prof[0]?.email}</p>
                         </div>
 
                         {/* <button className="yellow solicitar" type="submit">
@@ -123,7 +80,7 @@ export function VisualizarProfessor() {
                             <h2>Sobre minha Orientação</h2>
                             <hr />
                         </div>
-                        <p className="textParagraph">{professor.sobreOrientacao}</p>
+                        <p className="textParagraph">{prof[0]?.aboutOrientation}</p>
                     </div>
 
                     <div className="card-info">
@@ -133,7 +90,7 @@ export function VisualizarProfessor() {
                         </div>
 
                         <ul className="interesses-list-tags">
-                            { professor.modalidades.map((modalidade, index) => <li key={index}>{modalidade}</li>)}
+                            { prof[0]?.preferredModalities?.map((modalidade, index) => <li key={index}>{modalidade}</li>)}
                         </ul>
                     </div>
 
@@ -144,18 +101,18 @@ export function VisualizarProfessor() {
                         </div>
 
                         <ul className="interesses-list-tags">
-                            { professor.areas.map((area, index) => <li key={index}>{area}</li>)}
+                            { prof[0]?.researchAreas?.map((area, index) => <li key={index}>{area}</li>)}
                         </ul>
                     </div>
 
-                    <div className="card-info">
+                    {/* <div className="card-info">
                         <div className="header-info">
                             <h2>TCCs já orientados</h2>
                             <hr />
                         </div>
 
                         <ul className="card-TCC">
-                            {professor.TCCs.map(TCC => (
+                            {prof[0]?.TCCs?.map(TCC => (
                                 <CardTCC 
                                     idTCC={TCC.id}
                                     title={TCC.title}
@@ -165,7 +122,7 @@ export function VisualizarProfessor() {
                                 />
                             ))}
                         </ul>
-                    </div>
+                    </div> */}
 
                     <div className="card-info">
                         <div className="header-info">
@@ -174,7 +131,7 @@ export function VisualizarProfessor() {
                         </div>
                         
                         <ul className="cards-pesquisa">
-                            {professor.projetosPesquisa.map((projeto, index) => 
+                            {prof[0]?.researchProjects?.map((projeto, index) => 
                                 <li key={index} className="card-pesquisa">
                                     <p>{projeto.nome}</p>
                                     <label className="periodo">{projeto.dataInicio} - {projeto.dataFim}</label>
@@ -190,7 +147,7 @@ export function VisualizarProfessor() {
                         </div>
                         
                         <ul className="cards-pesquisa">
-                            {professor.projetosExtensao.map((projeto, index) => 
+                            {prof[0]?.extensionProjects?.map((projeto, index) => 
                                 <li key={index} className="card-pesquisa">
                                     <p>{projeto.nome}</p>
                                     <label className="periodo">{projeto.dataInicio} - {projeto.dataFim}</label>
@@ -209,7 +166,7 @@ export function VisualizarProfessor() {
                             <li className="card-pesquisa disciplinas">
                                 <label className="label-disciplinas">Lecionando</label>
                                 <ul className="interesses-list-tags disciplinas">
-                                    {professor.disciplinas.map((disciplina, index) => 
+                                    {prof[0]?.subjects?.map((disciplina, index) => 
                                         <li key={index} id={disciplina.semestre === semestreAtual ? null : "null"} >
                                             {disciplina.nome}
                                         </li>
@@ -220,7 +177,7 @@ export function VisualizarProfessor() {
                             <li className="card-pesquisa disciplinas">
                                 <label className="label-disciplinas">Já lecionadas</label>
                                 <ul className="interesses-list-tags disciplinas">
-                                    {professor.disciplinas.map((disciplina, index) => 
+                                    {prof[0]?.subjects?.map((disciplina, index) => 
                                         <li key={index} id={disciplina.semestre === semestreAtual ? "null" : null} >
                                             {disciplina.nome}
                                         </li>

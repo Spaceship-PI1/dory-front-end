@@ -5,9 +5,9 @@ import './style.css';
 export default function NavPerfil({ user }) {
     return (
         <nav className="container nav-perfil">
-            <h2>{user.nome}</h2>
+            <h2>{user.firstName + " " + user.lastName}</h2>
             <ul>
-                {user.perfil == "aluno" ? 
+                {user.role == "student" ? 
                 <>
                     <li>Sobre</li>
                     <li>Meu tema</li>
