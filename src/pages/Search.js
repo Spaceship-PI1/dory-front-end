@@ -10,14 +10,17 @@ import SearchInput from "../components/InputSearch";
 import CardGroup from "../components/CardGroup";
 
 import { AuthContext } from '../contexts/AuthContext';
-import { ListContext } from '../contexts/ListContext';
+
+import api from '../services/api';
 
 import '../styles/search.css';
 
 export function Search() {
     const { user, isAuthenticated } = useContext(AuthContext);
-    const { profsAll, tccsAll } = useContext(ListContext);
     const { 'dory.token': token } = parseCookies();
+
+    const [resultProfs, setResultProfs] = useState([]);
+    const [resultTccs, setResultTccs] = useState([]);
 
     const [searchParams] = useSearchParams();
     const pesquisa = searchParams.get('q');
@@ -38,6 +41,24 @@ export function Search() {
         window.location.href = '/';
       }
     }, [token, isAuthenticated]);
+
+    async function getResultSearchProfs() {
+        const response = await api.get(`/teacher_search?q=${pesquisa}`);
+        setResultProfs(response.data.searchResult);
+    }
+
+    async function getResultSearchTccs() {
+        const response = await api.get(`/tcc_search?q=${pesquisa}`);
+        setResultTccs(response.data.searchResult);
+    }
+    
+    useEffect(() => {
+        getResultSearchProfs();
+        getResultSearchTccs();
+    }, []);
+
+    console.log("profs", resultProfs);
+    console.log("tccs", resultTccs);
 
     return (
         <div>
@@ -69,7 +90,7 @@ export function Search() {
 
                         <CardGroup 
                             status={status}
-                            list={status == "TCCs" ? tccsAll : profsAll }
+                            list={status == "TCCs" ? resultTccs : resultProfs }
                         />
                     </div>
                 </div>

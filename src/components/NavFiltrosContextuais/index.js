@@ -1,8 +1,17 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Box from '@mui/material/Box';
 import Filtro from "../Filtro";
 
+import { ListContext } from '../../contexts/ListContext';
+
 export default function NavFiltrosContextuais({ status }) {
+    const {
+        setResultDisponibilidade,
+        setResultPreferencia,
+        setResultSemestre,
+        setResultModalidade,
+    } = useContext(ListContext);
+
     const [disponibilidade, setDisponibilidade] = useState('');
     const [prefModalidade, setPrefModalidade] = useState('');
     const [semestre, setSemestre] = useState('');
@@ -12,6 +21,24 @@ export default function NavFiltrosContextuais({ status }) {
     const handleChangePrefModalidade = (e) => setPrefModalidade(e.target.value); 
     const handleChangeSemestre = (e) => setSemestre(e.target.value); 
     const handleChangeModalidade = (e) => setModalidade(e.target.value); 
+
+    //filtros professores
+    // useEffect(() => {
+    //     setResultDisponibilidade(disponibilidade);
+    // }, [disponibilidade]);
+
+    // useEffect(() => {
+    //     setResultPreferencia(prefModalidade);
+    // }, [prefModalidade]);
+
+    // //filtros tccs
+    // useEffect(() => {
+    //     setResultModalidade(modalidade);
+    // }, [modalidade]);
+
+    // useEffect(() => {
+    //     setResultSemestre(semestre);
+    // }, [semestre]);
 
     return (
         <>
