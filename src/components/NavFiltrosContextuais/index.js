@@ -23,29 +23,38 @@ export default function NavFiltrosContextuais({ status }) {
 
   //filtros professores
   useEffect(() => {
-    setResultPreferencia('');
-    setPrefModalidade('');
+    /* if (disponibilidade === '') {
+      setResultDisponibilidade('');
+    } */
     setResultDisponibilidade(disponibilidade);
   }, [disponibilidade]);
 
   useEffect(() => {
-    setResultDisponibilidade('');
-    setDisponibilidade('');
+    /* if (prefModalidade === '') {
+      setResultPreferencia('');
+    } */
+
     setResultPreferencia(prefModalidade);
   }, [prefModalidade]);
 
   //filtros tccs
   useEffect(() => {
-    setResultSemestre('');
+    /* if (modalidade === '') {
+      setResultModalidade('');
+    } */
     setResultModalidade(modalidade);
   }, [modalidade]);
 
   useEffect(() => {
-    setResultModalidade('');
+    /*   if (semestre === '') {
+      setResultSemestre('');
+    } */
     setResultSemestre(semestre);
   }, [semestre]);
 
-  console.log(semestre);
+  console.log(
+    `disponibilidade:${disponibilidade}, prefModalidade:${prefModalidade}, modalidade:${modalidade}, semestre:${semestre}`
+  );
 
   return (
     <>
