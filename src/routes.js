@@ -29,7 +29,7 @@ function RoutesApp() {
 
             <Route path="/home" element={<Home />} />
             <Route path="/pesquisa" element={<Search />} />
-            <Route path="/visualizar/:idProfessor" element={<VisualizarProfessor />} />
+            <Route path="/professor/:idProfessor" element={<VisualizarProfessor />} />
             <Route path="/visualizar/aluno" element={<VisualizarAluno />} />
             <Route path="/tcc/:idTCC" element={<VisualizarTCC />} />
 

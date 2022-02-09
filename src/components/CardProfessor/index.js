@@ -10,7 +10,7 @@ export default function CardProfessor({ idProfessor, srcPerfil, nome, email, are
 
     const handleView = (e) => {
         navigate({
-            pathname: `/visualizar/${idProfessor}`,
+            pathname: `/professor/${idProfessor}`,
         });
 
         e.preventDefault();
