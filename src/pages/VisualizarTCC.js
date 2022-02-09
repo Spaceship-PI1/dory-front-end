@@ -71,7 +71,7 @@ export function VisualizarTCC() {
                         {TCC[0]?.abstract ?
                             <p className="textParagraph">{TCC[0]?.abstract}</p>
                         :
-                        <p className="textParagraph alert">Não possui abstract cadastrado!</p>
+                            <p className="textParagraph alert">Não possui abstract cadastrado!</p>
                         }
                         
                     </div>

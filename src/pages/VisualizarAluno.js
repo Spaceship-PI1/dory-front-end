@@ -1,54 +1,61 @@
-import React from "react";
+import React, { useContext, useEffect }  from "react";
 
 import NavBarGlobal from "../components/NavBarGlobal";
 import NavPerfil from "../components/NavPerfil";
 
+import { AuthContext } from '../contexts/AuthContext';
+import { parseCookies } from 'nookies';
+
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+
 import '../styles/visualizar.css';
 
 export function VisualizarAluno() {
-    const srcPerfil = "https://images.pexels.com/photos/3769021/pexels-photo-3769021.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940";
+    const { user, isAuthenticated } = useContext(AuthContext);
 
-    const aluno = {
-        id: 0,
-        perfil: "aluno",
-        foto: srcPerfil,
-        nome: "Alissa Fernandes",
-        email: "ali.fernandes@gmail.com.br",
-        areas: [
-            'Jogos', 'Design', 'Criação de personagens', 'Ilustração', 'Desenho', 'Visual Development', 'Animação', 'Cartum '
-        ],
-        statusTCC: "Comecei a escrever o projeto de TCC na disciplina de TCC 1",
-        sobre: "Oi, me chamo Alissa! Gosto bastante de design de personagens, tenho estudado sobre a área e explorado esse universo. Sou bastante focada, proativa e organizada, esses são meus pontos mais fortes.",
-        tema: "Avaliação dos personagens no universo do filme Viva a vida é uma festa",
-        modalidade: "Relatório Técnico",
-        pretensaoDefesa: "2022.1"
-    }
+    const { 'dory.token': token } = parseCookies();
+
+    useEffect(() => {
+        if (!token) {
+            window.location.href = '/';
+        }
+    }, []);
+
+    useEffect(() => {
+        if (!token) {
+            window.location.href = '/';
+        }
+    }, [token, isAuthenticated]);
 
     return (
         <div>
             <NavBarGlobal login={true} />
-            <NavPerfil user={aluno} />
+            <NavPerfil user={user} />
 
             <section className="container" id="visualizar">
                 <div className="content-perfil aluno" id="div-perfil">
                     <div className="infos-perfil">
                         <div className="perfil">
-                            <div className="foto-perfil">
-                                <img 
-                                    className="foto" 
-                                    src={aluno.foto}
-                                    alt={aluno.nome} />
-                            </div>
+                            {user?.photo ?
+                                <div className="foto-perfil">
+                                    <img 
+                                        className="foto" 
+                                        src={user?.photo}
+                                        alt={user?.firstName} />
+                                </div>
+                            :
+                                <AccountCircleIcon sx={{ fontSize: 134, color: '#506DD8' }} /> 
+                            }
                         </div>
 
                         <div className="dados-perfil">
-                            <h4>{aluno.nome}</h4>
-                            <p className="email">{aluno.email}</p>
+                            <h4>{user?.firstName + " " + user?.lastName}</h4>
+                            <p className="email">{user?.email}</p>
                         </div>
 
-                        <button className="yellow solicitar" type="submit">
+                        {/* <button className="yellow solicitar" type="submit">
                             Visualizar Proposta
-                        </button>
+                        </button> */}
                     </div> 
                 </div>
 
@@ -58,7 +65,12 @@ export function VisualizarAluno() {
                             <h2>Sobre</h2>
                             <hr />
                         </div>
-                        <p className="textParagraph">{aluno.sobre}</p>
+                        {user?.about ? 
+                            <p className="textParagraph">{user?.about}</p>
+                        :
+                            <p className="textParagraph alert">Não possui descrição cadastrada!</p>
+                        }
+                        
                     </div>
 
                     <div className="card-info">
@@ -66,17 +78,25 @@ export function VisualizarAluno() {
                             <h2>Meu tema</h2>
                             <hr />
                         </div>
-                        <p className="textParagraph">{aluno.tema}</p>
+                        {user?.tema ? 
+                            <p className="textParagraph">{user?.tema}</p>
+                        :
+                            <p className="textParagraph alert">Não possui tema cadastrado!</p>
+                        }
                     </div>
 
                     <div className="card-info">
                         <div className="header-info">
-                            <h2>Áreas de pesquisa</h2>
+                            <h2>Áreas de interesse</h2>
                             <hr />
                         </div>
 
                         <ul className="interesses-list-tags">
-                            { aluno.areas.map((area, index) => <li key={index}>{area}</li>)}
+                            {user?.interests ? 
+                                user?.interests?.map((area, index) => <li key={index}>{area}</li>)
+                            : 
+                                <p className="textParagraph alert">Não possui interesses cadastrados!</p>
+                            }
                         </ul>
                     </div>
 
@@ -85,7 +105,11 @@ export function VisualizarAluno() {
                             <h2>Modalidade escolhida</h2>
                             <hr />
                         </div>
-                        <p className="textParagraph">{aluno.modalidade}</p>
+                        {user?.modalidade ? 
+                            <p className="textParagraph">{user?.modalidade}</p>
+                        : 
+                            <p className="textParagraph alert">Não possui a modalidade cadastrada!</p>
+                        }
                     </div>
 
                     <div className="card-info">
@@ -93,7 +117,11 @@ export function VisualizarAluno() {
                             <h2>Status do desenvolvimento do TCC</h2>
                             <hr />
                         </div>
-                        <p className="textParagraph">{aluno.statusTCC}</p>
+                        {user?.statusTCC ? 
+                            <p className="textParagraph">{user?.statusTCC}</p>
+                        : 
+                            <p className="textParagraph alert">Não possui o status cadastrado!</p>
+                        }
                     </div>
 
                     <div className="card-info">
@@ -101,7 +129,11 @@ export function VisualizarAluno() {
                             <h2>Pretensão de defesa</h2>
                             <hr />
                         </div>
-                        <p className="textParagraph">{aluno.pretensaoDefesa}</p>
+                        {user?.pretensaoDefesa ? 
+                            <p className="textParagraph">{user?.pretensaoDefesa}</p>
+                        : 
+                            <p className="textParagraph alert">Não possui a pretensão de defesa cadastrada!</p>
+                        }
                     </div>
                 </div>
             </section>

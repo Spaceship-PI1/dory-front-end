@@ -18,7 +18,8 @@
 }
 
 #visualizar #div-perfil.aluno {
-    height: 324px;
+    width: 480px;
+    height: 270px;
 }   
 
 #visualizar #div-perfil .infos-perfil {

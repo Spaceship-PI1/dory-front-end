@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import Box from "@mui/material/Box";
 import Button from '@mui/material/Button';
@@ -28,6 +28,7 @@ import './style.css';
 
 export default function NavBarGlobal({ login }) {
     const { user } = useContext(AuthContext);
+    const navigate = useNavigate();
 
     const [menu, setMenu] = useState(null);
     const open = Boolean(menu);
@@ -42,6 +43,15 @@ export default function NavBarGlobal({ login }) {
     const handleCloseModal = () => setOpenModal(false);
 
     const handleDisponivel = () => setDisponibilidade("disponivel");
+
+    const handleViewMyPerfil = (e) => {
+        navigate({
+            pathname: `/visualizar`,
+        });
+
+        e.preventDefault();
+    }
+
 
     return (
         <nav className="container" >
@@ -136,7 +146,7 @@ export default function NavBarGlobal({ login }) {
                             </>
                         :
                             <>
-                                <MenuItem onClick={() => {}} sx={{fontSize: '1.4rem'}}>Ver Perfil</MenuItem>
+                                <MenuItem onClick={handleViewMyPerfil} sx={{fontSize: '1.4rem'}}>Ver Perfil</MenuItem>
                                 {/* <MenuItem onClick={() => {}} sx={{fontSize: '1.4rem'}}>Ver Solicitações</MenuItem> */}
                                 <MenuItem onClick={() => {}} sx={{fontSize: '1.4rem'}}>Sair</MenuItem>
                                 
