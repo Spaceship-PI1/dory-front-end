@@ -4,8 +4,12 @@ import Filtro from '../Filtro';
 import { ListContext } from '../../contexts/ListContext';
 
 export default function NavFiltrosContextuais({ status }) {
-  const { setResultDisponibilidade, setResultPreferencia } =
-    useContext(ListContext);
+  const {
+    setResultDisponibilidade,
+    setResultPreferencia,
+    setResultSemestre,
+    setResultModalidade,
+  } = useContext(ListContext);
 
   const [disponibilidade, setDisponibilidade] = useState('');
   const [prefModalidade, setPrefModalidade] = useState('');
@@ -17,12 +21,31 @@ export default function NavFiltrosContextuais({ status }) {
   const handleChangeSemestre = (e) => setSemestre(e.target.value);
   const handleChangeModalidade = (e) => setModalidade(e.target.value);
 
+  //filtros professores
   useEffect(() => {
+    setResultPreferencia('');
+    setPrefModalidade('');
     setResultDisponibilidade(disponibilidade);
   }, [disponibilidade]);
+
   useEffect(() => {
+    setResultDisponibilidade('');
+    setDisponibilidade('');
     setResultPreferencia(prefModalidade);
   }, [prefModalidade]);
+
+  //filtros tccs
+  useEffect(() => {
+    setResultSemestre('');
+    setResultModalidade(modalidade);
+  }, [modalidade]);
+
+  useEffect(() => {
+    setResultModalidade('');
+    setResultSemestre(semestre);
+  }, [semestre]);
+
+  console.log(semestre);
 
   return (
     <>
@@ -117,15 +140,15 @@ export default function NavFiltrosContextuais({ status }) {
             itens={[
               {
                 nome: 'Artigo Científico',
-                value: 1,
+                value: 'Artigo Científico',
               },
               {
                 nome: 'Relatório Técnico',
-                value: 2,
+                value: 'Relatório Técnico',
               },
               {
                 nome: 'Monografia',
-                value: 3,
+                value: 'Monografia',
               },
             ]}
           />

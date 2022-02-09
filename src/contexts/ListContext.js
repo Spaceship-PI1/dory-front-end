@@ -11,6 +11,7 @@ export function ListProvider({ children }) {
   const [resultDisponibilidade, setResultDisponibilidade] = useState('');
   const [resultPreferencia, setResultPreferencia] = useState('');
   const [resultModalidade, setResultModalidade] = useState('');
+  const [resultSemestre, setResultSemestre] = useState('');
 
   async function getProfessoresAll() {
     const response = await api.get('/teachers_all');
@@ -37,6 +38,8 @@ export function ListProvider({ children }) {
         setResultPreferencia,
         resultModalidade,
         setResultModalidade,
+        resultSemestre,
+        setResultSemestre,
       }}
     >
       {children}
