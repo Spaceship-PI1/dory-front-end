@@ -7,6 +7,7 @@
 }
 
 .no-results {
+    margin-top: 16px;
     margin-bottom: 24px;
     color: var(--red);
     font-weight: 500;

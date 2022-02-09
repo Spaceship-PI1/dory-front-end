@@ -23,22 +23,26 @@ export default function NavFiltrosContextuais({ status }) {
     const handleChangeModalidade = (e) => setModalidade(e.target.value); 
 
     //filtros professores
-    // useEffect(() => {
-    //     setResultDisponibilidade(disponibilidade);
-    // }, [disponibilidade]);
+    useEffect(() => {
+        setResultDisponibilidade(disponibilidade);
+    }, [disponibilidade]);
 
-    // useEffect(() => {
-    //     setResultPreferencia(prefModalidade);
-    // }, [prefModalidade]);
+    useEffect(() => {
+        setResultPreferencia(prefModalidade);
+    }, [prefModalidade]);
 
-    // //filtros tccs
-    // useEffect(() => {
-    //     setResultModalidade(modalidade);
-    // }, [modalidade]);
+    //filtros tccs
+    useEffect(() => {
+        setResultModalidade(modalidade);
+    }, [modalidade]);
 
-    // useEffect(() => {
-    //     setResultSemestre(semestre);
-    // }, [semestre]);
+    useEffect(() => {
+        setResultSemestre(semestre);
+    }, [semestre]);
+
+    console.log(
+        `disponibilidade:${disponibilidade}, prefModalidade:${prefModalidade}, modalidade:${modalidade}, semestre:${semestre}`
+    );
 
     return (
         <>
@@ -58,15 +62,15 @@ export default function NavFiltrosContextuais({ status }) {
                     itens={[
                         {
                             nome: "Disponível",
-                            value: 1
+                            value: "disponível"
                         },
                         {
                             nome: "Indisponível",
-                            value: 2
+                            value: "indisponível"
                         },
                         {
                             nome: "Em análise",
-                            value: 3
+                            value: "análise"
                         }
                     ]}
                 />
@@ -79,15 +83,15 @@ export default function NavFiltrosContextuais({ status }) {
                     itens={[
                         {
                             nome: "Artigo científico",
-                            value: 1
+                            value: "Artigo científico"
                         },
                         {
                             nome: "Relatório Técnico",
-                            value: 2
+                            value: "Relatório Técnico"
                         },
                         {
                             nome: "Monografia",
-                            value: 3
+                            value: "Monografia"
                         }
                     ]}
                 />
@@ -129,15 +133,15 @@ export default function NavFiltrosContextuais({ status }) {
                     itens={[
                         {
                             nome: "Artigo científico",
-                            value: 1
+                            value: "Artigo científico"
                         },
                         {
                             nome: "Relatório Técnico",
-                            value: 2
+                            value: "Relatório Técnico"
                         },
                         {
                             nome: "Monografia",
-                            value: 3
+                            value: "Monografia"
                         }
                     ]}
                 />

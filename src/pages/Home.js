@@ -42,7 +42,7 @@ export function Home() {
 
                     <div className="resultados-container">
                         {user?.interests?.map((inter, index) => (
-                                <Carrossel key={index} index={index} interesse={inter} />
+                            <Carrossel key={index} index={index} interesse={inter} />
                         ))}
                     </div>
                 </>
