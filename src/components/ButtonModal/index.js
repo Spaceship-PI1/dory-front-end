@@ -7,7 +7,7 @@ export default function ButtonModal({ className, required, name, question, place
         <div id="button-modal">
             <div className="label-required">
                 <label for={name}>{question}</label>
-                <label id={required}>*</label>
+                {question && <label id={required}>*</label> }
             </div>
             <button
                 className={className}

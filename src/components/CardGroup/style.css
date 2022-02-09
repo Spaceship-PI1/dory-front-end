@@ -5,3 +5,11 @@
     list-style: none;
     flex-wrap: wrap;
 }
+
+.no-results {
+    margin-bottom: 24px;
+    color: var(--red);
+    font-weight: 500;
+    letter-spacing: 1px;
+    font-size: 1.8rem;
+}

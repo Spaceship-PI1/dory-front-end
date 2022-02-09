@@ -1,7 +1,5 @@
 import React, { useContext, useEffect } from "react";
-import { AuthContext } from '../contexts/AuthContext';
 import { parseCookies } from 'nookies';
-
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup"
@@ -9,6 +7,8 @@ import * as yup from "yup";
 
 import NavBarGlobal from "../components/NavBarGlobal";
 import Input from "../components/Input";
+
+import { AuthContext } from '../contexts/AuthContext';
 
 import '../styles/auth.css';
 
@@ -37,7 +37,7 @@ export function Login() {
         }
     }, []);
 
-    // executa o useEffect sempre o tokwn mudar
+    // executa o useEffect sempre o token mudar
     useEffect(() => {
         if (token) {
             window.location.href = '/home';
@@ -67,8 +67,8 @@ export function Login() {
 
                         <Input 
                             register={register}
-                            name="senha"
-                            type="text"
+                            name="password"
+                            type="password"
                             question="Senha"
                             required="required"
                             placeholder="Não escreva 123"
@@ -77,7 +77,7 @@ export function Login() {
                         />
                         <p className="error">{errors.password?.message}</p>
                     </div>
-
+                    
                     <button className="yellow" type="submit">
                         Entrar
                     </button>

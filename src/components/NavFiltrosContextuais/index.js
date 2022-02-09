@@ -4,12 +4,12 @@ import Filtro from "../Filtro";
 
 export default function NavFiltrosContextuais({ status }) {
     const [disponibilidade, setDisponibilidade] = useState('');
-    const [preferenciaModalidade, setPreferenciaModalidade] = useState('');
+    const [prefModalidade, setPrefModalidade] = useState('');
     const [semestre, setSemestre] = useState('');
     const [modalidade, setModalidade] = useState('');
 
     const handleChangeDisponibilidade = (e) => setDisponibilidade(e.target.value); 
-    const handleChangePreferenciaModalidade = (e) => setPreferenciaModalidade(e.target.value); 
+    const handleChangePrefModalidade = (e) => setPrefModalidade(e.target.value); 
     const handleChangeSemestre = (e) => setSemestre(e.target.value); 
     const handleChangeModalidade = (e) => setModalidade(e.target.value); 
 
@@ -47,8 +47,8 @@ export default function NavFiltrosContextuais({ status }) {
                 <Filtro 
                     nome="Modalidade"
                     idFiltro="modalidade"
-                    value={preferenciaModalidade}
-                    onChange={handleChangePreferenciaModalidade}
+                    value={prefModalidade}
+                    onChange={handleChangePrefModalidade}
                     itens={[
                         {
                             nome: "Artigo científico",

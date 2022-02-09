@@ -1,4 +1,5 @@
 import React from "react";
+
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 import './style.css';
@@ -33,7 +34,7 @@ export default function CardProfessor({ idProfessor, srcPerfil, nome, email, are
             </div>
             
             <ul className="tags-areas">
-                {areas.map((area, index) => <li key={index} className="tag">{area}</li>)}
+                {areas?.map((area, index) => <li key={index} className="tag">{area}</li>)}
             </ul>
 
             <button className="yellow" type="submit">

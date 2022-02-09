@@ -65,9 +65,9 @@ export function AuthProvider({ children }) {
       setUser(user);
 
       if (role === 'student') {
-        navigate('/registerStudent');
+        navigate('/cadastro/aluno');
       } else if (role === 'teacher') {
-        navigate('/registerTeacher');
+        navigate('/cadastro/professor');
       }
     } else if (response.status === 202) {
       console.log(response.data.failed);

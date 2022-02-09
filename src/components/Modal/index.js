@@ -23,7 +23,7 @@ export default function Modal({ idModal, question, title, desc, body }) {
             <ButtonModal
                 name={idModal}
                 question={question}
-                required="required"
+                required={question && "required"}
                 className="buttonModal"
                 placeholder={title}
                 onClick={handleClickOpen}

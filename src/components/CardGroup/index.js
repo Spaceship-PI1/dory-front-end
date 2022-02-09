@@ -5,28 +5,43 @@ import CardTCC from "../CardTCC";
 import './style.css';
 
 export default function CardGroup({ status, list }) {
+    let isActiveCard = true;
+
+    list.length > 0 ? isActiveCard = true : isActiveCard = false;
+
     return (
         <ul className="cards">
-            {status === "professores" && list.map(professor => (
-                <CardProfessor 
-                    idProfessor={professor.id}
-                    srcPerfil={professor.foto}
-                    nome={professor.nome}
-                    email={professor.email}
-                    areas={professor.areas}
-                    status={professor.status}
-                />
-            ))}
-
-            {status === "TCCs" && list.map(TCC => (
-                <CardTCC 
-                    idTCC={TCC.id}
-                    title={TCC.title}
-                    aluno={TCC.aluno}
-                    professor={TCC.professor}
-                    areas={TCC.areas}
-                />
-            ))}
+            {
+                status == "professores" ?
+                    isActiveCard ?
+                        list.map(professor => (
+                            <CardProfessor 
+                                key={professor?._id}
+                                idProfessor={professor?._id}
+                                srcPerfil={professor?.photo}
+                                nome={professor?.firstName + ' ' + professor?.lastName}
+                                email={professor?.email}
+                                areas={professor?.researchAreas}
+                                status={professor?.availability}
+                            />
+                        ))
+                    :
+                        <label className="no-results">Não há resultados!</label>
+                :
+                    isActiveCard ?
+                        list.map(TCC => (
+                            <CardTCC 
+                                key={TCC?.id}
+                                idTCC={TCC?.id}
+                                title={TCC?.title}
+                                aluno={TCC?.student}
+                                professor={TCC?.teacher}
+                                areas={TCC?.areas}
+                            />
+                        ))
+                    :
+                        <label className="no-results">Não há resultados!</label>        
+                }
         </ul>
     )
 }

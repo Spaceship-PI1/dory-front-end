@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 
 import Box from "@mui/material/Box";
@@ -18,23 +18,16 @@ import CloseIcon from '@mui/icons-material/Close';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
-// import Button from "../Button";
+import { AuthContext } from '../../contexts/AuthContext';
 
 import logo from '../../assets/logo-negativa.svg';
 // import envelope from '../../assets/icons/envelope.svg';
+// import Button from "../Button";
 
 import './style.css';
 
 export default function NavBarGlobal({ login }) {
-    const srcPerfil = "https://images.pexels.com/photos/3769021/pexels-photo-3769021.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940";
-
-    const user = {
-        id: 0,
-        foto: srcPerfil,
-        nome: "Alissa",
-        perfil: "professor",
-        // solicitacoesPendentes: 0 
-    }
+    const { user } = useContext(AuthContext);
 
     const [menu, setMenu] = useState(null);
     const open = Boolean(menu);
@@ -55,7 +48,7 @@ export default function NavBarGlobal({ login }) {
             {login ?
                 <>
                 <div className="div-logo">
-                    <Link to="/">
+                    <Link to="/home">
                         <img className="logo" src={logo} alt="Dory" />
                     </Link>
 
@@ -97,10 +90,10 @@ export default function NavBarGlobal({ login }) {
                             marginLeft: '20px'
                         }}
                     >   
-                        {user.foto ? 
+                        {user.photo ? 
                             <Avatar 
-                                alt={user.nome}
-                                src={user.foto} 
+                                alt={user.firstName}
+                                src={user.photo} 
                                 sx={{ width: 34, height: 34, marginTop: 1, marginBottom: -0.3 }}
                             />
                         :
@@ -121,7 +114,7 @@ export default function NavBarGlobal({ login }) {
                                 fontWeight: 500
                             }}
                         >
-                            {user.nome}
+                            {user.firstName}
                         </Button>
 
                         <Menu
@@ -133,7 +126,7 @@ export default function NavBarGlobal({ login }) {
                             'aria-labelledby': 'basic-button',
                             }}
                         >
-                        {user.perfil === "professor" ?
+                        {user.role === "teacher" ?
                             <>
                                 <MenuItem onClick={() => {}} sx={{fontSize: '1.4rem'}}>Ver Perfil</MenuItem>
                                 <MenuItem onClick={() => {}} sx={{fontSize: '1.4rem'}}>Ver "Meus TCCs"</MenuItem>
@@ -244,12 +237,12 @@ export default function NavBarGlobal({ login }) {
             </>
             :
             <>
-                <Link to="/login">
+                <Link to="/">
                     <img className="logo" src={logo} alt="Dory" />
                 </Link>
 
                 <div className="nav-buttons">
-                    <Link to="/login" className="default">Entrar</Link>
+                    <Link to="/" className="default">Entrar</Link>
                     <Link to="/cadastro" className="yellow">Criar conta</Link>
                 </div>
             </>
