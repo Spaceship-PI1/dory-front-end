@@ -80,7 +80,11 @@ export function VisualizarProfessor() {
                             <h2>Sobre minha Orientação</h2>
                             <hr />
                         </div>
-                        <p className="textParagraph">{prof[0]?.aboutOrientation}</p>
+                        {prof[0]?.aboutOrientation ? 
+                            <p className="textParagraph">{prof[0]?.aboutOrientation}</p>
+                        :
+                            <p className="textParagraph alert">Não possui a descrição sobre a orientação cadastrada!</p>
+                        }
                     </div>
 
                     <div className="card-info">
@@ -88,10 +92,14 @@ export function VisualizarProfessor() {
                             <h2>Preferência de modalidade</h2>
                             <hr />
                         </div>
-
-                        <ul className="interesses-list-tags">
-                            { prof[0]?.preferredModalities?.map((modalidade, index) => <li key={index}>{modalidade}</li>)}
-                        </ul>
+                        
+                        {prof[0]?.preferredModalities.length > 0 ? 
+                            <ul className="interesses-list-tags">
+                                { prof[0]?.preferredModalities?.map((modalidade, index) => <li key={index}>{modalidade}</li>)}
+                            </ul>
+                        :
+                            <p className="textParagraph alert">Não possui a preferência de modalidade cadastrada!</p>
+                        }
                     </div>
 
                     <div className="card-info">
@@ -100,9 +108,13 @@ export function VisualizarProfessor() {
                             <hr />
                         </div>
 
-                        <ul className="interesses-list-tags">
-                            { prof[0]?.researchAreas?.map((area, index) => <li key={index}>{area}</li>)}
-                        </ul>
+                        {prof[0]?.researchAreas.length > 0 ? 
+                            <ul className="interesses-list-tags">
+                                { prof[0]?.researchAreas?.map((area, index) => <li key={index}>{area}</li>)}
+                            </ul>
+                        :
+                            <p className="textParagraph alert">Não possui as áreas de pesquisa cadastradas!</p>
+                        }
                     </div>
 
                     {/* <div className="card-info">
@@ -129,15 +141,19 @@ export function VisualizarProfessor() {
                             <h2>Projetos de pesquisa</h2>
                             <hr />
                         </div>
-                        
-                        <ul className="cards-pesquisa">
-                            {prof[0]?.researchProjects?.map((projeto, index) => 
-                                <li key={index} className="card-pesquisa">
-                                    <p>{projeto.nome}</p>
-                                    <label className="periodo">{projeto.dataInicio} - {projeto.dataFim}</label>
-                                </li>
-                            )}
-                        </ul>
+
+                        {prof[0]?.researchProjects.length > 0 ? 
+                            <ul className="cards-pesquisa">
+                                {prof[0]?.researchProjects?.map((projeto, index) => 
+                                    <li key={index} className="card-pesquisa">
+                                        <p>{projeto.nome}</p>
+                                        <label className="periodo">{projeto.dataInicio} - {projeto.dataFim}</label>
+                                    </li>
+                                )}
+                            </ul>
+                        :
+                            <p className="textParagraph alert">Não possui os projetos de pesquisa cadastrados!</p>
+                        }
                     </div>
 
                     <div className="card-info">
@@ -146,14 +162,18 @@ export function VisualizarProfessor() {
                             <hr />
                         </div>
                         
-                        <ul className="cards-pesquisa">
-                            {prof[0]?.extensionProjects?.map((projeto, index) => 
-                                <li key={index} className="card-pesquisa">
-                                    <p>{projeto.nome}</p>
-                                    <label className="periodo">{projeto.dataInicio} - {projeto.dataFim}</label>
-                                </li>
-                            )}
-                        </ul>
+                        {prof[0]?.extensionProjects.length > 0 ? 
+                            <ul className="cards-pesquisa">
+                                {prof[0]?.extensionProjects?.map((projeto, index) => 
+                                    <li key={index} className="card-pesquisa">
+                                        <p>{projeto.nome}</p>
+                                        <label className="periodo">{projeto.dataInicio} - {projeto.dataFim}</label>
+                                    </li>
+                                )}
+                            </ul>
+                        :
+                            <p className="textParagraph alert">Não possui os projetos de extensão cadastrados!</p>
+                        }
                     </div>
 
                     <div className="card-info">
@@ -161,30 +181,34 @@ export function VisualizarProfessor() {
                             <h2>Disciplinas</h2>
                             <hr />
                         </div>
-                        
-                        <ul className="cards-pesquisa last">
-                            <li className="card-pesquisa disciplinas">
-                                <label className="label-disciplinas">Lecionando</label>
-                                <ul className="interesses-list-tags disciplinas">
-                                    {prof[0]?.subjects?.map((disciplina, index) => 
-                                        <li key={index} id={disciplina.semestre === semestreAtual ? null : "null"} >
-                                            {disciplina.nome}
-                                        </li>
-                                    )}
-                                </ul> 
-                            </li>
 
-                            <li className="card-pesquisa disciplinas">
-                                <label className="label-disciplinas">Já lecionadas</label>
-                                <ul className="interesses-list-tags disciplinas">
-                                    {prof[0]?.subjects?.map((disciplina, index) => 
-                                        <li key={index} id={disciplina.semestre === semestreAtual ? "null" : null} >
-                                            {disciplina.nome}
-                                        </li>
-                                    )}
-                                </ul> 
-                            </li> 
-                        </ul>
+                        {prof[0]?.subjects.length > 0 ? 
+                            <ul className="cards-pesquisa last">
+                                <li className="card-pesquisa disciplinas">
+                                    <label className="label-disciplinas">Lecionando</label>
+                                    <ul className="interesses-list-tags disciplinas">
+                                        {prof[0]?.subjects?.map((disciplina, index) => 
+                                            <li key={index} id={disciplina.semestre === semestreAtual ? null : "null"} >
+                                                {disciplina.nome}
+                                            </li>
+                                        )}
+                                    </ul> 
+                                </li>
+
+                                <li className="card-pesquisa disciplinas">
+                                    <label className="label-disciplinas">Já lecionadas</label>
+                                    <ul className="interesses-list-tags disciplinas">
+                                        {prof[0]?.subjects?.map((disciplina, index) => 
+                                            <li key={index} id={disciplina.semestre === semestreAtual ? "null" : null} >
+                                                {disciplina.nome}
+                                            </li>
+                                        )}
+                                    </ul> 
+                                </li> 
+                            </ul>
+                        :
+                            <p className="textParagraph alert">Não possui as disciplinas cadastradas!</p>
+                        }
                     </div>
                 </div>
             </section>
