@@ -19,6 +19,7 @@ import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 import { AuthContext } from '../../contexts/AuthContext';
+import api from '../../services/api';
 
 import logo from '../../assets/logo-negativa.svg';
 // import envelope from '../../assets/icons/envelope.svg';
@@ -42,7 +43,7 @@ export default function NavBarGlobal({ login }) {
     const handleClickModal = () => setOpenModal(true);
     const handleCloseModal = () => setOpenModal(false);
 
-    const handleDisponivel = () => setDisponibilidade("disponivel");
+    const handleDisponibilidade = (e) => setDisponibilidade(e.target.value);
 
     const handleViewMyPerfil = (e) => {
         navigate({
@@ -52,6 +53,14 @@ export default function NavBarGlobal({ login }) {
         e.preventDefault();
     }
 
+    console.log(disponibilidade);
+
+    async function handleSubmit(e) {
+        e.preventDefault(); 
+
+        const response = await api.get(`/tcc_search?q=${disponibilidade}`);
+        console.log(response.data.newProf);
+    }
 
     return (
         <nav className="container" >
@@ -138,7 +147,7 @@ export default function NavBarGlobal({ login }) {
                         >
                         {user?.role === "teacher" ?
                             <>
-                                <MenuItem onClick={() => {}} sx={{fontSize: '1.4rem'}}>Ver Perfil</MenuItem>
+                                <MenuItem onClick={handleViewMyPerfil} sx={{fontSize: '1.4rem'}}>Ver Perfil</MenuItem>
                                 <MenuItem onClick={() => {}} sx={{fontSize: '1.4rem'}}>Ver "Meus TCCs"</MenuItem>
                                 {/* <MenuItem onClick={() => {}} sx={{fontSize: '1.4rem'}}>Ver Solicitações</MenuItem> */}
                                 <MenuItem onClick={handleClickModal} sx={{fontSize: '1.4rem'}}>Atualizar Disponibilidade</MenuItem>
@@ -207,13 +216,13 @@ export default function NavBarGlobal({ login }) {
                                 flexDirection: 'column',
                                 justifyContent: 'flex-start'
                             }}>
-                                <button className="btn-status" id="disponivel">
+                                <button key="disponivel" className="btn-status" value="disponível" id="disponivel" onClick={handleDisponibilidade}>
                                     Disponível
                                 </button>
-                                <button className="btn-status" id="indisponivel">
+                                <button key="indispponivel" className="btn-status" value="indisponível" id="indisponivel" onClick={handleDisponibilidade}>
                                     Indisponível
                                 </button>
-                                <button className="btn-status" id="analise">
+                                <button key="analise" className="btn-status" value="analise" id="analise" onClick={handleDisponibilidade}>
                                     Disponibilidade em análise
                                 </button>
                             </Box>
@@ -227,20 +236,21 @@ export default function NavBarGlobal({ login }) {
                                 marginRight: 2
                             }}
                         >
-                            oi
-                            {/* <Button 
+                            <button
                                 className="defaultModal"
-                                idButton="cancelar"
-                                placeholder="Cancelar"
+                                id="cancelar"
                                 onClick={handleCloseModal}
-                            />
-
-                            <Button 
+                            >
+                                Cancelar
+                            </button>
+                            <button
                                 className="secondaryModal"
-                                idButton="salvar"
-                                placeholder="Salvar"
-                                onClick={() => {}}
-                            /> */}
+                                id="salvar"
+                                onClick={handleSubmit}
+                                type="submit"
+                            >
+                                Salvar
+                            </button>
                         </DialogActions>
                     </Dialog>
                 </div>
