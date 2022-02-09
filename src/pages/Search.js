@@ -55,7 +55,7 @@ export function Search() {
     useEffect(() => {
         getResultSearchProfs();
         getResultSearchTccs();
-    }, []);
+    }, [pesquisa]);
 
     console.log("profs", resultProfs);
     console.log("tccs", resultTccs);
