@@ -6,13 +6,18 @@
 
 ## :computer: Projeto
 
-Dory é uma aplicação web que tem como objetivo ajudar os alunos de Sistemas e Mídias Digitais da UFC a encontrarem um professor orientador para seu TCC.
+Dory é uma aplicação web que tem como objetivo ajudar os alunos de Sistemas e Mídias Digitais da Universidade Federal do Ceará a encontrarem um professor orientador para seu TCC. O projeto foi desenvolvido durante a disciplina de Projeto Integrado I no semestre 2021.2 pela equipe Spaceship, formada por [Larissa Araújo](https://github.com/araujlarissa), [Letícia Torres](https://github.com/leticialimatorres) e [Myguel Angello](https://github.com/myguelangello).
 
 ## 🧪 Tecnologias
 
 Esse projeto foi desenvolvido com as seguintes tecnologias:
 
 - [React](https://reactjs.org)
+- [CSS3](https://developer.mozilla.org/en-US/docs/Web/CSS)
+- [Axios](https://axios-http.com/docs/intro)
+- [MUI](https://mui.com/pt/)
+- [Nookies](https://www.npmjs.com/package/nookies)
+- [Yup](https://www.npmjs.com/package/yup)
 
 ## :pushpin: Requisitos funcionais
 
