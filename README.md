@@ -21,7 +21,7 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 
 ## :pushpin: Requisitos funcionais
 
-Para ter acesso à todos os requisitos funcionais da aplicação, acesso o [README](https://github.com/Spaceship-PI1/sobre-dory/blob/main/README.md) base do projeto.
+Para ter acesso à todos os requisitos funcionais da aplicação, acesse o [README](https://github.com/Spaceship-PI1/sobre-dory/blob/main/README.md) base do projeto.
 
 ## 🚀 Como executar
 
