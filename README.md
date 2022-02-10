@@ -5,6 +5,7 @@
 </div>
 
 ## :computer: Projeto
+
 Dory é uma aplicação web que tem como objetivo ajudar os alunos de Sistemas e Mídias Digitais da UFC a encontrarem um professor orientador para seu TCC.
 
 ## 🧪 Tecnologias
@@ -12,6 +13,10 @@ Dory é uma aplicação web que tem como objetivo ajudar os alunos de Sistemas e
 Esse projeto foi desenvolvido com as seguintes tecnologias:
 
 - [React](https://reactjs.org)
+
+## :pushpin: Requisitos funcionais
+
+Para ter acesso à todos os requisitos funcionais da aplicação, acesso o [README](https://github.com/Spaceship-PI1/sobre-dory/blob/main/README.md) base do projeto.
 
 ## 🚀 Como executar
 
@@ -37,7 +42,7 @@ $ npm start
 $ yarn start
 ```
 
-O app estará disponível no seu browser pelo endereço http://localhost:3000.
+O app estará disponível no seu browser pelo endereço http://localhost:3000
 
 ---
 
