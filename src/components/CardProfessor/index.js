@@ -30,8 +30,8 @@ export default function CardProfessor({ idProfessor, srcPerfil, nome, email, are
                         :
                         <AccountCircleIcon sx={{ fontSize: 66, color: '#506DD8' }} /> 
                     }
-                    <div className="status" id={status.toLowerCase()} >
-                        <div className="bolinha" id={status.toLowerCase()} ></div>
+                    <div className="status" id={status?.toLowerCase()} >
+                        <div className="bolinha" id={status?.toLowerCase()} ></div>
                     </div>
                 </div>
 

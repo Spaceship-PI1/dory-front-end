@@ -146,8 +146,8 @@ export function VisualizarProfessor() {
                             <ul className="cards-pesquisa">
                                 {prof[0]?.researchProjects?.map((projeto, index) => 
                                     <li key={index} className="card-pesquisa">
-                                        <p>{projeto.nome}</p>
-                                        <label className="periodo">{projeto.dataInicio} - {projeto.dataFim}</label>
+                                        <p>{projeto.title}</p>
+                                        <label className="periodo">{projeto.inicio} - {projeto.fim}</label>
                                     </li>
                                 )}
                             </ul>
@@ -166,8 +166,8 @@ export function VisualizarProfessor() {
                             <ul className="cards-pesquisa">
                                 {prof[0]?.extensionProjects?.map((projeto, index) => 
                                     <li key={index} className="card-pesquisa">
-                                        <p>{projeto.nome}</p>
-                                        <label className="periodo">{projeto.dataInicio} - {projeto.dataFim}</label>
+                                        <p>{projeto.title}</p>
+                                        <label className="periodo">{projeto.inicio} - {projeto.fim}</label>
                                     </li>
                                 )}
                             </ul>
@@ -189,7 +189,7 @@ export function VisualizarProfessor() {
                                     <ul className="interesses-list-tags disciplinas">
                                         {prof[0]?.subjects?.map((disciplina, index) => 
                                             <li key={index} id={disciplina.semestre === semestreAtual ? null : "null"} >
-                                                {disciplina.nome}
+                                                {disciplina.title}
                                             </li>
                                         )}
                                     </ul> 
@@ -200,7 +200,7 @@ export function VisualizarProfessor() {
                                     <ul className="interesses-list-tags disciplinas">
                                         {prof[0]?.subjects?.map((disciplina, index) => 
                                             <li key={index} id={disciplina.semestre === semestreAtual ? "null" : null} >
-                                                {disciplina.nome}
+                                                {disciplina.title}
                                             </li>
                                         )}
                                     </ul> 

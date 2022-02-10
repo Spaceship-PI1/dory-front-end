@@ -56,10 +56,9 @@ export default function NavBarGlobal({ login }) {
     console.log(disponibilidade);
 
     async function handleSubmit(e) {
-        e.preventDefault(); 
-
-        const response = await api.get(`/tcc_search?q=${disponibilidade}`);
+        const response = await api.get(`/tcc_search?id=${user?._id}&newAvailability=${disponibilidade}`);
         console.log(response.data.newProf);
+        e.preventDefault(); 
     }
 
     return (
@@ -165,6 +164,7 @@ export default function NavBarGlobal({ login }) {
                     </Box>
 
                     <Dialog open={openModal} onClose={handleCloseModal}>
+                        <form onSubmit={handleSubmit}>
                         <Box sx={{
                             display: 'flex',
                             alignItems: 'center',
@@ -246,12 +246,12 @@ export default function NavBarGlobal({ login }) {
                             <button
                                 className="secondaryModal"
                                 id="salvar"
-                                onClick={handleSubmit}
                                 type="submit"
                             >
                                 Salvar
                             </button>
                         </DialogActions>
+                        </form>
                     </Dialog>
                 </div>
             </>

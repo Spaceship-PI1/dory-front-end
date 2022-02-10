@@ -57,9 +57,6 @@ export function Search() {
         getResultSearchTccs();
     }, [pesquisa]);
 
-    console.log("profs", resultProfs);
-    console.log("tccs", resultTccs);
-
     return (
         <div>
             <NavBarGlobal login={true} />

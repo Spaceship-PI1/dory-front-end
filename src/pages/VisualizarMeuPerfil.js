@@ -1,4 +1,4 @@
-import React, { useContext, useEffect }  from "react";
+import React, { useContext, useEffect, useState }  from "react";
 
 import NavBarGlobal from "../components/NavBarGlobal";
 import NavPerfil from "../components/NavPerfil";
@@ -8,9 +8,14 @@ import { parseCookies } from 'nookies';
 
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
+import api from '../services/api';
+
 import '../styles/visualizar.css';
 
 export function VisualizarMeuPerfil() {
+    const [idTCC, setIdTCC] = useState("");
+    const [TCC, setTCC] = useState([]);
+
     const { user, isAuthenticated } = useContext(AuthContext);
 
     const { 'dory.token': token } = parseCookies();
@@ -28,6 +33,16 @@ export function VisualizarMeuPerfil() {
             window.location.href = '/';
         }
     }, [token, isAuthenticated]);
+
+
+    async function getTCCId() {
+        const response = await api.get(`/tcc_id?id=${idTCC}`);
+        setTCC(response.data.tcc);
+    }
+    
+    useEffect(() => {
+        getTCCId(); 
+    }, []);
 
     return (
         <div>
@@ -256,8 +271,8 @@ export function VisualizarMeuPerfil() {
                                 <ul className="cards-pesquisa">
                                     {user?.researchProjects?.map((projeto, index) => 
                                         <li key={index} className="card-pesquisa">
-                                            <p>{projeto.nome}</p>
-                                            <label className="periodo">{projeto.dataInicio} - {projeto.dataFim}</label>
+                                            <p>{projeto.title}</p>
+                                            <label className="periodo">{projeto.inicio} - {projeto.fim}</label>
                                         </li>
                                     )}
                                 </ul>
@@ -276,8 +291,8 @@ export function VisualizarMeuPerfil() {
                                 <ul className="cards-pesquisa">
                                     {user?.extensionProjects?.map((projeto, index) => 
                                         <li key={index} className="card-pesquisa">
-                                            <p>{projeto.nome}</p>
-                                            <label className="periodo">{projeto.dataInicio} - {projeto.dataFim}</label>
+                                            <p>{projeto.title}</p>
+                                            <label className="periodo">{projeto.inicio} - {projeto.fim}</label>
                                         </li>
                                     )}
                                 </ul>
@@ -299,7 +314,7 @@ export function VisualizarMeuPerfil() {
                                         <ul className="interesses-list-tags disciplinas">
                                             {user?.subjects?.map((disciplina, index) => 
                                                 <li key={index} id={disciplina.semestre === semestreAtual ? null : "null"} >
-                                                    {disciplina.nome}
+                                                    {disciplina.title}
                                                 </li>
                                             )}
                                         </ul> 
@@ -310,7 +325,7 @@ export function VisualizarMeuPerfil() {
                                         <ul className="interesses-list-tags disciplinas">
                                             {user?.subjects?.map((disciplina, index) => 
                                                 <li key={index} id={disciplina.semestre === semestreAtual ? "null" : null} >
-                                                    {disciplina.nome}
+                                                    {disciplina.title}
                                                 </li>
                                             )}
                                         </ul> 
